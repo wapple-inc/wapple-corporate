@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
 import ContactForm from "@/components/ContactForm";
+
+export const metadata: Metadata = {
+  title: "お問い合わせ",
+  description:
+    "株式会社Wappleへのお問い合わせ。事業戦略・企業研修・コーチングに関するご相談はこちらから。課題が整理されていない段階でもお気軽にどうぞ。",
+  openGraph: {
+    title: "お問い合わせ",
+    description:
+      "Wappleへのご相談はこちら。課題が整理されていない段階でもお気軽にどうぞ。",
+    url: "https://wapple.co.jp/contact",
+  },
+};
 
 export default function ContactPage() {
   return (

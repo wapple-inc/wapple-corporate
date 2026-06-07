@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
+
+export const metadata: Metadata = {
+  title: "サービス",
+  description:
+    "Wappleの3つのサービス：事業戦略コンサルティング（市場調査・新規事業支援）、企業研修・人材開発、ビジネスコーチング。経営課題の整理から行動変容まで一貫支援。",
+  openGraph: {
+    title: "サービス",
+    description:
+      "事業戦略コンサルティング・企業研修・ビジネスコーチング。経営課題の整理から行動変容まで一貫支援。",
+    url: "https://wapple.co.jp/services",
+  },
+};
 
 const services = [
   {

@@ -1,10 +1,23 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
+
+export const metadata: Metadata = {
+  title: "Wappleについて",
+  description:
+    "株式会社Wappleの代表プロフィール・企業概要。三菱UFJリサーチ＆コンサルティング、Apple Japanでの経験を経て2026年設立。コンサルティング・企業研修・コーチングを提供。",
+  openGraph: {
+    title: "Wappleについて",
+    description:
+      "株式会社Wappleの代表プロフィール・企業概要。コンサルティング・企業研修・コーチングを提供。",
+    url: "https://wapple.co.jp/about",
+  },
+};
 
 const credentials = [
   "国際コーチング連盟（ICF）アソシエイト認定コーチ（ACC）",
   "一般社団法人マインドフルネス瞑想協会認定講師",
-  "Certified Digital Wellness Educator（Digital Wellness Institute）",
+  "Digital Wellness Institute Certified Digital Wellness Educator",
 ];
 
 const companyInfo = [
@@ -70,9 +83,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <FadeIn>
               <div className="aspect-[3/4] bg-[#e5e5e5] relative overflow-hidden mb-6">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <p className="text-[#6b6b6b] text-sm">Photo</p>
-                </div>
+                <Image
+                  src="/profile.png"
+                  alt="秦 善成"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <h3 className="font-serif text-2xl font-bold text-[#0a0a0a] mb-1">秦 善成</h3>
               <p className="text-sm text-[#6b6b6b] mb-1">Yoshinari Hata</p>

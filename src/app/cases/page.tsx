@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "支援実績",
+  description:
+    "Wappleの支援実績。食品メーカーの新規事業構想・販路戦略、小売チェーンの市場調査、建設会社の海外拠点設立支援など、多様な業種・テーマのプロジェクト実績。",
+  openGraph: {
+    title: "支援実績",
+    description:
+      "新規事業・事業戦略・市場調査など、多様な業種・テーマのプロジェクト支援実績。",
+    url: "https://wapple.co.jp/cases",
+  },
+};
 
 const cases = [
   {

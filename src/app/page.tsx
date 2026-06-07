@@ -2,6 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "株式会社Wapple",
+  url: "https://wapple.co.jp",
+  logo: "https://wapple.co.jp/og-image.png",
+  description:
+    "事業戦略コンサルティング・企業研修・ビジネスコーチングを通じて、企業の課題解決から行動変容までを一貫して支援。",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "下目黒１丁目１番１４号 コノトラビル７F",
+    addressLocality: "目黒区",
+    addressRegion: "東京都",
+    addressCountry: "JP",
+  },
+  founder: { "@type": "Person", name: "秦 善成" },
+  foundingDate: "2026-04-24",
+};
+
 const services = [
   {
     title: "事業戦略\nコンサルティング",
@@ -36,6 +55,10 @@ const numbers = [
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 z-0">
