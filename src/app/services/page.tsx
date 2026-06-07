@@ -1,0 +1,157 @@
+import Link from "next/link";
+import FadeIn from "@/components/FadeIn";
+
+const services = [
+  {
+    id: "consulting",
+    number: "01",
+    title: "事業戦略コンサルティング",
+    subtitle: "Strategy Consulting",
+    lead: "複雑な課題を整理し、経営の意思決定を支援する。",
+    description:
+      "市場調査・競合分析・事業検討支援を通じて、経営判断に必要な材料を整理します。",
+    pains: [
+      "新規事業を検討しているが、何から手をつければいいか分からない",
+      "競合・市場環境の変化に対して、打ち手が見えていない",
+      "課題は感じているが、論点が整理できていない",
+      "戦略は描けているが、現場への浸透・実装で止まっている",
+    ],
+    menu: [
+      { item: "市場調査・競合分析", desc: "定量・定性調査を組み合わせ、市場実態を把握" },
+      { item: "新規事業検討支援", desc: "事業アイデアの検証から事業計画策定まで" },
+      { item: "論点整理・意思決定支援", desc: "複雑な課題を構造化し、判断材料を整理" },
+      { item: "経営壁打ち支援", desc: "代表・役員との対話を通じた戦略的思考の整理" },
+    ],
+  },
+  {
+    id: "training",
+    number: "02",
+    title: "企業研修・人材開発",
+    subtitle: "Corporate Training",
+    lead: "知識の習得で終わらせず、現場で使われる学びへ。",
+    description:
+      "一方向の講義ではなく、対話と実践を重視した研修を設計。組織に学習文化を根付かせます。",
+    pains: [
+      "研修を実施しても、現場での行動が変わらない",
+      "管理職・チームリーダーのマネジメント力を底上げしたい",
+      "ロジカルシンキングやコミュニケーション力を組織全体で強化したい",
+      "研修プログラムを一から設計する時間・リソースがない",
+    ],
+    menu: [
+      { item: "ロジカルシンキング研修", desc: "構造的思考・論点整理・資料作成力の強化" },
+      { item: "コミュニケーション・ホスピタリティ研修", desc: "対話力・聴く力・伝える力の向上" },
+      { item: "管理職向けマネジメント研修", desc: "チームビルディング・フィードバック・組織改善" },
+      { item: "研修プログラム設計支援", desc: "OJT/Off-JT設計から講師トレーニングまで" },
+    ],
+  },
+  {
+    id: "coaching",
+    number: "03",
+    title: "ビジネスコーチング",
+    subtitle: "Business Coaching",
+    lead: "経営者・リーダーの思考を整理し、行動変容を支援する。",
+    description:
+      "意思決定に迷いが生じた時、課題を整理し、次の行動を明確にします。経営者・管理職・リーダー層を対象に、個人と組織の変化を伴走支援します。",
+    pains: [
+      "経営判断に迷いが生じており、思考を整理したい",
+      "管理職として、部下への関わり方・マネジメントを見直したい",
+      "目標は明確だが、行動に移せずにいる",
+      "自分の強みと課題を客観的に把握し、成長につなげたい",
+    ],
+    menu: [
+      { item: "経営者・役員向け個人コーチング", desc: "月2〜4回、60分/回のセッション" },
+      { item: "管理職・リーダー向けコーチング", desc: "チームマネジメント・自己成長の促進" },
+      { item: "グループコーチング", desc: "チーム・部門単位での対話・内省の促進" },
+      { item: "企業向けセルフマネジメントプログラム", desc: "自己調整力・行動変容を組織に実装" },
+    ],
+  },
+];
+
+export default function ServicesPage() {
+  return (
+    <>
+      {/* Page header */}
+      <section className="pt-32 pb-16 px-6 border-b border-[#e5e5e5]">
+        <div className="max-w-6xl mx-auto">
+          <FadeIn>
+            <p className="text-xs tracking-[0.3em] text-[#6b6b6b] uppercase mb-4">Services</p>
+            <h1 className="font-serif text-4xl md:text-6xl font-bold text-[#0a0a0a]">
+              サービス
+            </h1>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Service list */}
+      {services.map((s, idx) => (
+        <section
+          key={s.id}
+          id={s.id}
+          className={`py-24 px-6 ${idx % 2 === 1 ? "bg-[#f9f9f9]" : ""}`}
+        >
+          <div className="max-w-6xl mx-auto">
+            <FadeIn>
+              <div className="flex items-baseline gap-4 mb-8">
+                <span className="font-serif text-6xl font-bold text-[#e5e5e5]">{s.number}</span>
+                <div>
+                  <p className="text-xs tracking-[0.2em] text-[#6b6b6b] uppercase mb-1">{s.subtitle}</p>
+                  <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#0a0a0a]">{s.title}</h2>
+                </div>
+              </div>
+              <p className="font-serif text-lg text-[#0a0a0a] mb-6 border-l-2 border-[#0a0a0a] pl-4">
+                {s.lead}
+              </p>
+              <p className="text-sm text-[#6b6b6b] leading-relaxed mb-12 max-w-2xl">{s.description}</p>
+            </FadeIn>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <FadeIn delay={0.1}>
+                <h3 className="text-xs tracking-[0.2em] text-[#6b6b6b] uppercase mb-6">
+                  こんな課題はありませんか
+                </h3>
+                <ul className="space-y-4">
+                  {s.pains.map((pain) => (
+                    <li key={pain} className="flex items-start gap-3 text-sm text-[#6b6b6b]">
+                      <span className="mt-2 w-1.5 h-1.5 border border-[#6b6b6b] rounded-full flex-shrink-0" />
+                      {pain}
+                    </li>
+                  ))}
+                </ul>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <h3 className="text-xs tracking-[0.2em] text-[#6b6b6b] uppercase mb-6">
+                  提供メニュー
+                </h3>
+                <div className="space-y-4">
+                  {s.menu.map((m) => (
+                    <div key={m.item} className="border-b border-[#e5e5e5] pb-4">
+                      <p className="text-sm font-bold text-[#0a0a0a] mb-1">{m.item}</p>
+                      <p className="text-xs text-[#6b6b6b]">{m.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      {/* CTA */}
+      <section className="py-20 px-6 bg-[#0a0a0a] text-center">
+        <FadeIn>
+          <p className="text-sm text-[#6b6b6b] mb-6 leading-relaxed">
+            まずは課題を話してみましょう。<br />
+            ご支援内容・料金はご状況に応じてご提案します。
+          </p>
+          <Link
+            href="/contact"
+            className="inline-block border border-white text-white px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#0a0a0a] transition-colors"
+          >
+            お問い合わせ
+          </Link>
+        </FadeIn>
+      </section>
+    </>
+  );
+}
