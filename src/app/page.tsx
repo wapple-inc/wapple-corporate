@@ -156,9 +156,6 @@ export default function Home() {
               代表プロフィールを見る →
             </Link>
           </FadeIn>
-          <FadeIn delay={0.2}>
-            <div className="aspect-square bg-[#f0f0f0]" />
-          </FadeIn>
         </div>
       </section>
 

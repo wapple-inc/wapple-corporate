@@ -45,9 +45,6 @@ export default function AboutPage() {
       {/* Philosophy */}
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <FadeIn>
-            <div className="aspect-square bg-[#f0f0f0]" />
-          </FadeIn>
           <FadeIn delay={0.2}>
             <h2 className="font-serif text-3xl font-bold text-[#0a0a0a] mb-8 leading-tight">
               課題を構造的に捉え、<br />行動を生む支援を。
