@@ -61,15 +61,6 @@ export default function Home() {
       />
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/hero-network.png"
-            alt=""
-            fill
-            className="object-cover object-top opacity-40"
-            priority
-          />
-        </div>
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <FadeIn>
             <p className="text-sm tracking-[0.3em] text-[#6b6b6b] mb-6 uppercase">
@@ -115,9 +106,6 @@ export default function Home() {
 
       {/* Services */}
       <section className="py-24 px-6 relative">
-        <div className="absolute inset-0 z-0 opacity-5">
-          <Image src="/bg-grid.png" alt="" fill className="object-cover" />
-        </div>
         <div className="relative z-10 max-w-6xl mx-auto">
           <FadeIn>
             <p className="text-xs tracking-[0.3em] text-[#6b6b6b] uppercase mb-4">Services</p>
@@ -169,14 +157,7 @@ export default function Home() {
             </Link>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <div className="aspect-square bg-[#e5e5e5] relative overflow-hidden">
-              <Image
-                src="/hero-network.png"
-                alt="Wapple"
-                fill
-                className="object-cover opacity-60"
-              />
-            </div>
+            <div className="aspect-square bg-[#f0f0f0]" />
           </FadeIn>
         </div>
       </section>
