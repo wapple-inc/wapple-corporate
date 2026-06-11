@@ -3,6 +3,7 @@ import { Inter, Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import NetworkBackground from "@/components/NetworkBackground";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,6 +56,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${inter.variable} ${notoSerifJP.variable}`}>
       <body className="antialiased">
+        <NetworkBackground />
         <Header />
         <main>{children}</main>
         <Footer />
