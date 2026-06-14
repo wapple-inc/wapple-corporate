@@ -1,22 +1,39 @@
 import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
 import ContactForm from "@/components/ContactForm";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL, SITE_NAME, breadcrumbJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "お問い合わせ",
   description:
     "株式会社Wappleへのお問い合わせ。事業戦略・企業研修・コーチングに関するご相談はこちらから。課題が整理されていない段階でもお気軽にどうぞ。",
+  alternates: { canonical: "/contact" },
   openGraph: {
     title: "お問い合わせ",
     description:
       "Wappleへのご相談はこちら。課題が整理されていない段階でもお気軽にどうぞ。",
-    url: "https://wapple.co.jp/contact",
+    url: `${SITE_URL}/contact`,
   },
 };
 
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "お問い合わせ | 株式会社Wapple",
+  url: `${SITE_URL}/contact`,
+  about: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+};
+
 export default function ContactPage() {
+  const breadcrumb = breadcrumbJsonLd([
+    { name: "ホーム", path: "/" },
+    { name: "お問い合わせ", path: "/contact" },
+  ]);
+
   return (
     <>
+      <JsonLd data={[contactJsonLd, breadcrumb]} />
       {/* Page header */}
       <section className="pt-32 pb-16 px-6 border-b border-[#e5e5e5]">
         <div className="max-w-6xl mx-auto">

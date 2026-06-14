@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL, SITE_NAME, breadcrumbJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "サービス",
   description:
     "Wappleの3つのサービス：事業戦略コンサルティング（市場調査・新規事業支援）、企業研修・人材開発、ビジネスコーチング。経営課題の整理から行動変容まで一貫支援。",
+  alternates: { canonical: "/services" },
   openGraph: {
     title: "サービス",
     description:
       "事業戦略コンサルティング・企業研修・ビジネスコーチング。経営課題の整理から行動変容まで一貫支援。",
-    url: "https://wapple.co.jp/services",
+    url: `${SITE_URL}/services`,
   },
 };
 
@@ -79,8 +82,33 @@ const services = [
 ];
 
 export default function ServicesPage() {
+  const servicesJsonLd = services.map((s) => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: s.title,
+    serviceType: s.subtitle,
+    description: s.description,
+    url: `${SITE_URL}/services#${s.id}`,
+    provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    areaServed: "JP",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: s.title,
+      itemListElement: s.menu.map((m) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: m.item, description: m.desc },
+      })),
+    },
+  }));
+
+  const breadcrumb = breadcrumbJsonLd([
+    { name: "ホーム", path: "/" },
+    { name: "サービス", path: "/services" },
+  ]);
+
   return (
     <>
+      <JsonLd data={[...servicesJsonLd, breadcrumb]} />
       {/* Page header */}
       <section className="pt-32 pb-16 px-6 border-b border-[#e5e5e5]">
         <div className="max-w-6xl mx-auto">

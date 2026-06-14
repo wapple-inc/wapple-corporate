@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL, breadcrumbJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "支援実績",
   description:
     "Wappleの支援実績。食品メーカーの新規事業構想・販路戦略、小売チェーンの市場調査、建設会社の海外拠点設立支援など、多様な業種・テーマのプロジェクト実績。",
+  alternates: { canonical: "/cases" },
   openGraph: {
     title: "支援実績",
     description:
       "新規事業・事業戦略・市場調査など、多様な業種・テーマのプロジェクト支援実績。",
-    url: "https://wapple.co.jp/cases",
+    url: `${SITE_URL}/cases`,
   },
 };
 
@@ -71,8 +74,26 @@ const categoryColors: Record<string, string> = {
 };
 
 export default function CasesPage() {
+  const itemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "株式会社Wapple 支援実績",
+    itemListElement: cases.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.title,
+      description: c.description,
+    })),
+  };
+
+  const breadcrumb = breadcrumbJsonLd([
+    { name: "ホーム", path: "/" },
+    { name: "支援実績", path: "/cases" },
+  ]);
+
   return (
     <>
+      <JsonLd data={[itemList, breadcrumb]} />
       {/* Page header */}
       <section className="pt-32 pb-16 px-6 border-b border-[#e5e5e5]">
         <div className="max-w-6xl mx-auto">

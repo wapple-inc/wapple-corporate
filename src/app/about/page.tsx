@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL, SITE_NAME, ORG, breadcrumbJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Wappleについて",
   description:
     "株式会社Wappleの代表プロフィール・企業概要。三菱UFJリサーチ＆コンサルティング、Apple Japanでの経験を経て2026年設立。コンサルティング・企業研修・コーチングを提供。",
+  alternates: { canonical: "/about" },
   openGraph: {
     title: "Wappleについて",
     description:
       "株式会社Wappleの代表プロフィール・企業概要。コンサルティング・企業研修・コーチングを提供。",
-    url: "https://wapple.co.jp/about",
+    url: `${SITE_URL}/about`,
   },
 };
 
@@ -20,6 +23,30 @@ const credentials = [
   "Digital Wellness Institute Certified Digital Wellness Educator",
 ];
 
+// 代表者の E-E-A-T を高める Person 構造化データ
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${SITE_URL}/about#hata-yoshinari`,
+  name: "秦 善成",
+  alternateName: "Yoshinari Hata",
+  jobTitle: "代表取締役",
+  image: `${SITE_URL}/profile.png`,
+  url: `${SITE_URL}/about`,
+  worksFor: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+  description:
+    "三菱UFJリサーチ＆コンサルティングでグローバル戦略コンサルタントとして6年間従事し、市場調査・事業戦略立案・新規事業検討を担当。その後Apple Japanにてデータ分析・業務改善・人材育成に従事。2026年に株式会社Wappleを設立。",
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "早稲田大学" },
+    { "@type": "CollegeOrUniversity", name: "北京大学" },
+  ],
+  knowsAbout: ORG.knowsAbout,
+  hasCredential: credentials.map((c) => ({
+    "@type": "EducationalOccupationalCredential",
+    name: c,
+  })),
+};
+
 const companyInfo = [
   { label: "会社名（商号）", value: "株式会社Wapple" },
   { label: "代表者名", value: "秦 善成" },
@@ -28,8 +55,14 @@ const companyInfo = [
 ];
 
 export default function AboutPage() {
+  const breadcrumb = breadcrumbJsonLd([
+    { name: "ホーム", path: "/" },
+    { name: "Wappleについて", path: "/about" },
+  ]);
+
   return (
     <>
+      <JsonLd data={[personJsonLd, breadcrumb]} />
       {/* Page header */}
       <section className="pt-32 pb-16 px-6 border-b border-[#e5e5e5]">
         <div className="max-w-6xl mx-auto">
