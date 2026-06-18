@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const services = [
   {
     category: "Coaching",
-    title: "パーソナルコーチング",
+    title: "伴走コーチング",
     description:
       "目標設定から行動変容まで、対話を通じて個人の課題を構造化し、継続的な変化をサポートします。",
     href: "https://www.wapple.life/coaching",
@@ -65,7 +65,7 @@ export default function PersonalPage() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#e5e5e5]">
           {services.map((s, i) => (
             <FadeIn key={s.title} delay={i * 0.1}>
-              <div className="p-10 border-b border-[#e5e5e5] md:odd:border-r min-h-[280px] flex flex-col">
+              <div className="p-10 border-b border-[#e5e5e5] last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 md:odd:border-r min-h-[280px] flex flex-col">
                 <div className="mb-6">
                   <span className={`text-xs px-2.5 py-1 tracking-wider ${s.available ? "bg-[#0a0a0a] text-white" : "bg-[#e5e5e5] text-[#6b6b6b]"}`}>
                     {s.category}
