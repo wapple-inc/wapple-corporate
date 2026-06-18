@@ -8,12 +8,15 @@ import { marked } from "marked";
 
 const POSTS_DIR = path.join(process.cwd(), "src/content/insights");
 
+export type InsightTag = "コラム" | "お知らせ";
+
 export type InsightMeta = {
   slug: string;
   title: string;
   description: string;
   date: string; // YYYY-MM-DD
   category: string;
+  tag: InsightTag;
   keywords: string[];
   draft: boolean;
 };
@@ -35,6 +38,7 @@ function parseFile(fileName: string): { meta: InsightMeta; raw: string } {
       description: String(data.description ?? ""),
       date: String(data.date ?? ""),
       category: String(data.category ?? ""),
+      tag: (data.tag === "お知らせ" ? "お知らせ" : "コラム") as InsightTag,
       keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : [],
       draft: Boolean(data.draft ?? false),
     },
