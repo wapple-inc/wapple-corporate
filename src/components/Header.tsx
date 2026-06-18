@@ -10,6 +10,8 @@ const navItems = [
   { label: "Contact", href: "/contact" },
 ];
 
+const personalNavItem = { label: "個人の方へ", href: "/personal" };
+
 export default function Header() {
   const [open, setOpen] = useState(false);
 
@@ -31,6 +33,12 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href={personalNavItem.href}
+            className="text-sm text-[#6b6b6b] hover:text-[#0a0a0a] transition-colors tracking-wider border border-[#e5e5e5] px-3 py-1.5"
+          >
+            {personalNavItem.label}
+          </Link>
           <Link
             href="/contact"
             className="text-sm border border-[#0a0a0a] px-4 py-2 hover:bg-[#0a0a0a] hover:text-white transition-colors tracking-wider"
@@ -64,6 +72,13 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href={personalNavItem.href}
+            onClick={() => setOpen(false)}
+            className="text-sm text-[#6b6b6b] hover:text-[#0a0a0a] tracking-wider"
+          >
+            {personalNavItem.label}
+          </Link>
         </div>
       )}
     </header>
