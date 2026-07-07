@@ -57,7 +57,6 @@ export const PERSON = {
     "JADP認定上級心理カウンセラー",
     "一般社団法人マインドフルネス瞑想協会認定講師",
     "Digital Wellness Institute Certified Digital Wellness Educator",
-    "Google Digital Marketing & E-Commerce Certificate",
   ],
 } as const;
 
@@ -75,12 +74,8 @@ export const personJsonLd = {
   worksFor: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
   description: PERSON.description,
   sameAs: PERSON.sameAs,
-  alumniOf: [
-    { "@type": "CollegeOrUniversity", name: "早稲田大学" },
-    { "@type": "CollegeOrUniversity", name: "北京大学" },
-  ],
+  alumniOf: [{ "@type": "CollegeOrUniversity", name: "早稲田大学" }],
   knowsAbout: ORG.knowsAbout,
-  knowsLanguage: ["ja", "en", "zh"],
   hasCredential: PERSON.credentials.map((c) => ({
     "@type": "EducationalOccupationalCredential",
     name: c,

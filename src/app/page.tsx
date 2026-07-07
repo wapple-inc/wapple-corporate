@@ -129,13 +129,13 @@ export default function Home() {
           <FadeIn>
             <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">About</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-8 leading-tight">
-              課題を構造的に捉え、<br />行動を生む支援を。
+              点と点をつなぎ、<br />変化の波紋を広げる。
             </h2>
             <p className="text-sm text-[#6e6e73] leading-relaxed mb-10">
-              企業が抱える課題は、戦略だけでも、人材育成だけでも解決できません。
-              必要なのは、課題を構造的に整理し、人の行動変容につなげること。
-              Wappleは、コンサルティング・企業研修・ビジネスコーチングを通じて、
-              経営と現場の間にあるギャップを埋め、持続的な変化を支援します。
+              Wappleという名前は、Water Ripple——水の波紋に由来します。
+              点在する課題や可能性をつなぎ、構造として捉える。
+              そして、一人ひとりの小さな気づきと行動の変化を、組織全体へ波紋のように広げていく。
+              その土台づくりを、コンサルティング・企業研修・ビジネスコーチングを通じて支援します。
             </p>
             <p className="text-sm text-[#6e6e73] mb-6">
               代表取締役　<span className="text-[#1d1d1f] font-semibold">秦 善成</span>（Yoshinari Hata）

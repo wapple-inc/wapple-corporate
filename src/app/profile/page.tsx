@@ -31,29 +31,25 @@ const profilePageJsonLd = {
   mainEntity: { "@id": PERSON.id },
 };
 
-const career = [
+// 年次は記載しない（経歴の流れが伝われば十分なため）。社名＋何をしてきたか、のみ。
+const career: { org: string; detail?: string }[] = [
   {
-    period: "2009 – 2013",
-    org: "早稲田大学 政治経済学部 経済学科",
-    detail: "在学中に北京大学（対外漢語教育学院）へ留学し、中国語を習得。",
+    org: "早稲田大学 政治経済学部 経済学科 卒業",
   },
   {
-    period: "2014 – 2020",
     org: "三菱UFJリサーチ＆コンサルティング",
     detail:
       "小売・流通・消費財業界を中心に、海外展開・新規事業の市場調査、事業戦略立案、ビジネスデューデリジェンスに従事。",
   },
   {
-    period: "2020 – 2024",
     org: "Apple Japan",
     detail:
-      "取引データの分析・リスク評価に加え、新入社員・中途社員向け研修の設計と実施、VOC分析に基づく改善施策を担当。",
+      "オンラインストアの不正取引対策におけるデータ分析と、新入社員・中途社員向け研修の設計・実施を担当。顧客の声をもとにしたサービス品質の改善にも携わる。",
   },
   {
-    period: "2025 –",
     org: "株式会社Wapple",
     detail:
-      "独立を経て株式会社Wappleを設立。事業戦略コンサルティング・企業研修・コーチングを通じて、課題の構造化から行動変容までを伴走型で支援している。",
+      "独立を経て設立。事業戦略コンサルティング・企業研修・コーチングを通じて、課題の構造化から行動変容までを伴走型で支援している。",
   },
 ];
 
@@ -73,6 +69,14 @@ const expertise = [
     detail:
       "ICF認定コーチ（ACC）として経営者・管理職・会社員へのコーチングを提供。マインドフルネスを取り入れた関わりが特徴。",
   },
+];
+
+const companyInfo = [
+  { label: "会社名（商号）", value: "株式会社Wapple" },
+  { label: "代表者名", value: "秦 善成" },
+  { label: "事業内容", value: "事業戦略コンサルティング／企業研修・人材開発／ビジネスコーチング" },
+  { label: "所在地", value: "東京都目黒区下目黒１丁目１番１４号 コノトラビル７F" },
+  { label: "設立日", value: "2026年4月24日" },
 ];
 
 const publications = [
@@ -143,8 +147,40 @@ export default function ProfilePage() {
         </div>
       </section>
 
-      {/* Career */}
+      {/* About Wapple — 社名の由来と考え方 */}
       <section className="py-24 px-6 bg-[#f5f5f7]">
+        <div className="max-w-6xl mx-auto">
+          <FadeIn>
+            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">About Wapple</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-12 leading-tight">
+              点と点をつなぎ、<br className="md:hidden" />変化の波紋を広げる。
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <div className="max-w-2xl">
+              <p className="text-sm text-[#6e6e73] leading-relaxed mb-6">
+                Wappleという名前は、Water Ripple——水の波紋に由来します。
+              </p>
+              <p className="text-sm text-[#6e6e73] leading-relaxed mb-6">
+                組織の課題や可能性は、ばらばらの点のように見えて、実はつながっています。
+                戦略、人材、現場の行動、組織の文化。
+                点と点をつなぎ、構造として捉えることで、はじめて本質的な打ち手が見えてきます。
+              </p>
+              <p className="text-sm text-[#6e6e73] leading-relaxed mb-6">
+                そして、変化は大きな掛け声からは生まれません。
+                一人ひとりの小さな気づきと行動の変化が、水面の波紋のように、周囲へ、組織全体へと広がっていく。
+                Wappleは、コンサルティング・企業研修・コーチングを通じて、その持続的な変化が生まれる土台づくりを支援します。
+              </p>
+              <p className="text-xs text-[#6e6e73]">
+                このサイトの背景で点と点が結ばれていくのは、この考え方を表したものです。
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Career */}
+      <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
             <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Career</p>
@@ -152,13 +188,12 @@ export default function ProfilePage() {
           </FadeIn>
           <div className="max-w-3xl">
             {career.map((c, i) => (
-              <FadeIn key={c.period} delay={i * 0.05}>
-                <div className="grid grid-cols-1 md:grid-cols-[10rem_1fr] gap-2 md:gap-6 py-6 border-t border-[#d2d2d7] last:border-b">
-                  <p className="text-xs tracking-wider text-[#6e6e73] pt-1">{c.period}</p>
-                  <div>
-                    <p className="text-base font-semibold text-[#1d1d1f] mb-2">{c.org}</p>
+              <FadeIn key={c.org} delay={i * 0.05}>
+                <div className="py-6 border-t border-[#d2d2d7] last:border-b">
+                  <p className={`text-base font-semibold text-[#1d1d1f] ${c.detail ? "mb-2" : ""}`}>{c.org}</p>
+                  {c.detail && (
                     <p className="text-sm text-[#6e6e73] leading-relaxed">{c.detail}</p>
-                  </div>
+                  )}
                 </div>
               </FadeIn>
             ))}
@@ -167,7 +202,7 @@ export default function ProfilePage() {
       </section>
 
       {/* Expertise */}
-      <section className="py-24 px-6">
+      <section className="py-24 px-6 bg-[#f5f5f7]">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
             <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Expertise</p>
@@ -187,7 +222,7 @@ export default function ProfilePage() {
       </section>
 
       {/* Credentials & Publications */}
-      <section className="py-24 px-6 bg-[#f5f5f7]">
+      <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
           <FadeIn>
             <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Credentials</p>
@@ -199,10 +234,6 @@ export default function ProfilePage() {
                   {c}
                 </li>
               ))}
-              <li className="flex items-start gap-3 text-sm text-[#6e6e73]">
-                <span className="mt-2 w-1 h-1 bg-[#1d1d1f] rounded-full flex-shrink-0" />
-                TOEIC 790点 / HSK（漢語水平考試）5級
-              </li>
             </ul>
           </FadeIn>
           <FadeIn delay={0.1}>
@@ -217,6 +248,26 @@ export default function ProfilePage() {
               ))}
             </ul>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* Company Info */}
+      <section className="py-24 px-6 bg-[#f5f5f7]">
+        <div className="max-w-6xl mx-auto">
+          <FadeIn>
+            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Company</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-16">企業概要</h2>
+          </FadeIn>
+          <div className="max-w-3xl">
+            {companyInfo.map((item, i) => (
+              <FadeIn key={item.label} delay={i * 0.05}>
+                <div className="flex gap-6 py-5 border-t border-[#d2d2d7] last:border-b">
+                  <p className="text-xs tracking-wider text-[#6e6e73] w-36 flex-shrink-0 pt-0.5">{item.label}</p>
+                  <p className="text-sm text-[#1d1d1f]">{item.value}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
