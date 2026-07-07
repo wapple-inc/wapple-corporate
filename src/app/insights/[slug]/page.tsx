@@ -79,11 +79,11 @@ export default async function InsightPage({ params }: Props) {
 
       <article>
         {/* Header */}
-        <header className="pt-32 pb-12 px-6 border-b border-[#e5e5e5]">
+        <header className="pt-32 pb-12 px-6 border-b border-[#d2d2d7]">
           <div className="max-w-3xl mx-auto">
             <FadeIn>
-              <div className="flex items-center gap-3 mb-6 text-xs text-[#6b6b6b]">
-                <Link href="/insights" className="tracking-wider hover:text-[#0a0a0a]">
+              <div className="flex items-center gap-3 mb-6 text-xs text-[#6e6e73]">
+                <Link href="/insights" className="tracking-wider hover:text-[#1d1d1f]">
                   Insights
                 </Link>
                 <span>/</span>
@@ -91,7 +91,7 @@ export default async function InsightPage({ params }: Props) {
                 <span>/</span>
                 <time dateTime={post.date}>{formatDate(post.date)}</time>
               </div>
-              <h1 className="font-serif text-3xl md:text-4xl font-bold text-[#0a0a0a] leading-tight">
+              <h1 className="font-display text-3xl md:text-4xl font-bold text-[#1d1d1f] leading-tight">
                 {post.title}
               </h1>
             </FadeIn>
@@ -108,13 +108,13 @@ export default async function InsightPage({ params }: Props) {
               />
             </FadeIn>
 
-            <div className="mt-16 pt-10 border-t border-[#e5e5e5]">
-              <p className="text-xs tracking-wider text-[#6b6b6b] mb-2">AUTHOR</p>
-              <p className="text-sm text-[#0a0a0a] font-bold mb-1">{ORG.founderName}</p>
-              <p className="text-sm text-[#6b6b6b] leading-relaxed">
+            <div className="mt-16 pt-10 border-t border-[#d2d2d7]">
+              <p className="text-xs tracking-wider text-[#6e6e73] mb-2">AUTHOR</p>
+              <p className="text-sm text-[#1d1d1f] font-bold mb-1">{ORG.founderName}</p>
+              <p className="text-sm text-[#6e6e73] leading-relaxed">
                 株式会社Wapple 代表取締役。三菱UFJリサーチ＆コンサルティング、Apple Japanを経て、
                 事業戦略・人材開発・コーチングの伴走支援を行う。
-                <Link href="/about" className="ml-1 underline hover:text-[#0a0a0a]">
+                <Link href="/about" className="ml-1 underline hover:text-[#1d1d1f]">
                   プロフィール
                 </Link>
               </p>
@@ -123,14 +123,14 @@ export default async function InsightPage({ params }: Props) {
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-6 bg-[#0a0a0a] text-center">
+        <section className="py-20 px-6 bg-[#1d1d1f] text-center">
           <FadeIn>
-            <p className="text-sm text-[#6b6b6b] mb-6 leading-relaxed">
+            <p className="text-sm text-[#6e6e73] mb-6 leading-relaxed">
               記事に関連する課題について、お気軽にご相談ください。
             </p>
             <Link
               href="/contact"
-              className="inline-block border border-white text-white px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#0a0a0a] transition-colors"
+              className="inline-block border border-white text-white px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#1d1d1f] transition-colors"
             >
               お問い合わせ
             </Link>

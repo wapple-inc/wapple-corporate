@@ -38,6 +38,55 @@ export const ORG = {
   ],
 } as const;
 
+// 代表者の基本情報（/profile ページと構造化データの正本）
+export const PERSON = {
+  name: "秦 善成",
+  nameCompact: "秦善成",
+  furigana: "はた よしなり",
+  nameEn: "Yoshinari Hata",
+  jobTitle: "代表取締役",
+  id: `${SITE_URL}/profile#person`,
+  url: `${SITE_URL}/profile`,
+  image: `${SITE_URL}/profile.png`,
+  description:
+    "株式会社Wapple代表取締役。三菱UFJリサーチ＆コンサルティングでグローバル戦略コンサルタントとして6年間従事し、市場調査・事業戦略立案・新規事業検討を担当。その後Apple Japanにてデータ分析・業務改善・人材育成・研修設計に従事。2026年に株式会社Wappleを設立し、コンサルティング・企業研修・コーチングを提供。ICF認定コーチ（ACC）。",
+  // 同一人物のWeb上の別拠点（検索エンジンのエンティティ統合シグナル）
+  sameAs: ["https://www.wapple.life"],
+  credentials: [
+    "国際コーチング連盟（ICF）アソシエイト認定コーチ（ACC）",
+    "JADP認定上級心理カウンセラー",
+    "一般社団法人マインドフルネス瞑想協会認定講師",
+    "Digital Wellness Institute Certified Digital Wellness Educator",
+    "Google Digital Marketing & E-Commerce Certificate",
+  ],
+} as const;
+
+// Person 構造化データ（正本。/profile で出力し、他ページからは @id で参照する）
+export const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": PERSON.id,
+  name: PERSON.name,
+  alternateName: [PERSON.nameCompact, PERSON.furigana, PERSON.nameEn],
+  jobTitle: PERSON.jobTitle,
+  image: PERSON.image,
+  url: PERSON.url,
+  mainEntityOfPage: PERSON.url,
+  worksFor: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+  description: PERSON.description,
+  sameAs: PERSON.sameAs,
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "早稲田大学" },
+    { "@type": "CollegeOrUniversity", name: "北京大学" },
+  ],
+  knowsAbout: ORG.knowsAbout,
+  knowsLanguage: ["ja", "en", "zh"],
+  hasCredential: PERSON.credentials.map((c) => ({
+    "@type": "EducationalOccupationalCredential",
+    name: c,
+  })),
+};
+
 // Organization 構造化データ（全ページ共通で使える）
 export const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -52,7 +101,7 @@ export const organizationJsonLd = {
   description:
     "事業戦略コンサルティング・企業研修・ビジネスコーチングを通じて、企業の課題解決から行動変容までを一貫して支援。",
   foundingDate: ORG.foundingDate,
-  founder: { "@type": "Person", name: ORG.founderName },
+  founder: { "@type": "Person", "@id": `${SITE_URL}/profile#person`, name: ORG.founderName },
   address: {
     "@type": "PostalAddress",
     streetAddress: ORG.address.streetAddress,

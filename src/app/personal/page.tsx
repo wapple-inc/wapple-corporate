@@ -45,14 +45,14 @@ export default function PersonalPage() {
       <JsonLd data={[breadcrumb]} />
 
       {/* Page header */}
-      <section className="pt-32 pb-16 px-6 border-b border-[#e5e5e5]">
+      <section className="pt-32 pb-16 px-6 border-b border-[#d2d2d7]">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <p className="text-xs tracking-[0.3em] text-[#6b6b6b] uppercase mb-4">For Individuals</p>
-            <h1 className="font-serif text-4xl md:text-6xl font-bold text-[#0a0a0a]">
+            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">For Individuals</p>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-[#1d1d1f]">
               個人の方へ
             </h1>
-            <p className="mt-6 text-sm text-[#6b6b6b] leading-relaxed max-w-xl">
+            <p className="mt-6 text-sm text-[#6e6e73] leading-relaxed max-w-xl">
               法人・チームではなく、個人として成長・変容を求める方に向けたサービスをご用意しています。
               ご興味のあるサービスの詳細ページへお進みください。
             </p>
@@ -62,19 +62,19 @@ export default function PersonalPage() {
 
       {/* Services grid */}
       <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#e5e5e5]">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#d2d2d7]">
           {services.map((s, i) => (
             <FadeIn key={s.title} delay={i * 0.1}>
-              <div className="p-10 border-b border-[#e5e5e5] last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 md:odd:border-r min-h-[280px] flex flex-col">
+              <div className="p-10 border-b border-[#d2d2d7] last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 md:odd:border-r min-h-[280px] flex flex-col">
                 <div className="mb-6">
-                  <span className={`text-xs px-2.5 py-1 tracking-wider ${s.available ? "bg-[#0a0a0a] text-white" : "bg-[#e5e5e5] text-[#6b6b6b]"}`}>
+                  <span className={`text-xs px-2.5 py-1 tracking-wider ${s.available ? "bg-[#1d1d1f] text-white" : "bg-[#d2d2d7] text-[#6e6e73]"}`}>
                     {s.category}
                   </span>
                 </div>
-                <h2 className="font-serif text-xl font-bold text-[#0a0a0a] mb-4 leading-snug">
+                <h2 className="font-display text-xl font-bold text-[#1d1d1f] mb-4 leading-snug">
                   {s.title}
                 </h2>
-                <p className="text-sm text-[#6b6b6b] leading-relaxed flex-1">
+                <p className="text-sm text-[#6e6e73] leading-relaxed flex-1">
                   {s.description}
                 </p>
                 {s.available && s.href ? (
@@ -82,7 +82,7 @@ export default function PersonalPage() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-8 inline-flex items-center gap-2 text-sm border border-[#0a0a0a] px-6 py-3 hover:bg-[#0a0a0a] hover:text-white transition-colors tracking-wider self-start"
+                    className="mt-8 inline-flex items-center gap-2 text-sm border border-[#1d1d1f] px-6 py-3 hover:bg-[#1d1d1f] hover:text-white transition-colors tracking-wider self-start"
                   >
                     詳細・お申込みはこちら
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -99,18 +99,18 @@ export default function PersonalPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-[#f9f9f9] text-center">
+      <section className="py-20 px-6 bg-[#f5f5f7] text-center">
         <FadeIn>
-          <p className="text-xs tracking-[0.3em] text-[#6b6b6b] uppercase mb-6">Corporate</p>
-          <p className="font-serif text-2xl font-bold text-[#0a0a0a] mb-4">
+          <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-6">Corporate</p>
+          <p className="font-display text-2xl font-bold text-[#1d1d1f] mb-4">
             法人・チームへのご支援はこちら
           </p>
-          <p className="text-sm text-[#6b6b6b] mb-8">
+          <p className="text-sm text-[#6e6e73] mb-8">
             企業・組織向けのコンサルティング・研修・コーチングは法人向けサービスをご覧ください。
           </p>
           <Link
             href="/services"
-            className="inline-block border border-[#0a0a0a] text-[#0a0a0a] px-10 py-4 text-sm tracking-widest hover:bg-[#0a0a0a] hover:text-white transition-colors"
+            className="inline-block border border-[#1d1d1f] text-[#1d1d1f] px-10 py-4 text-sm tracking-widest hover:bg-[#1d1d1f] hover:text-white transition-colors"
           >
             法人向けサービスを見る
           </Link>

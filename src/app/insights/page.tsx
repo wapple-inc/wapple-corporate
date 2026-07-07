@@ -46,14 +46,14 @@ export default function InsightsPage() {
       <JsonLd data={[collectionJsonLd, breadcrumb]} />
 
       {/* Page header */}
-      <section className="pt-32 pb-16 px-6 border-b border-[#e5e5e5]">
+      <section className="pt-32 pb-16 px-6 border-b border-[#d2d2d7]">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <p className="text-xs tracking-[0.3em] text-[#6b6b6b] uppercase mb-4">Insights</p>
-            <h1 className="font-serif text-4xl md:text-6xl font-bold text-[#0a0a0a]">
+            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Insights</p>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-[#1d1d1f]">
               インサイト
             </h1>
-            <p className="text-sm text-[#6b6b6b] leading-relaxed mt-6 max-w-2xl">
+            <p className="text-sm text-[#6e6e73] leading-relaxed mt-6 max-w-2xl">
               事業戦略・人材開発・組織開発・コーチングに関する実務的な知見をお届けします。
             </p>
           </FadeIn>
@@ -64,7 +64,7 @@ export default function InsightsPage() {
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           {posts.length === 0 ? (
-            <p className="text-sm text-[#6b6b6b]">記事を準備中です。</p>
+            <p className="text-sm text-[#6e6e73]">記事を準備中です。</p>
           ) : (
             <InsightsFilter posts={posts} />
           )}
@@ -72,14 +72,14 @@ export default function InsightsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-[#0a0a0a] text-center">
+      <section className="py-20 px-6 bg-[#1d1d1f] text-center">
         <FadeIn>
-          <p className="text-sm text-[#6b6b6b] mb-6 leading-relaxed">
+          <p className="text-sm text-[#6e6e73] mb-6 leading-relaxed">
             具体的な課題について相談したい方は、お気軽にお問い合わせください。
           </p>
           <Link
             href="/contact"
-            className="inline-block border border-white text-white px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#0a0a0a] transition-colors"
+            className="inline-block border border-white text-white px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#1d1d1f] transition-colors"
           >
             お問い合わせ
           </Link>

@@ -110,11 +110,11 @@ export default function ServicesPage() {
     <>
       <JsonLd data={[...servicesJsonLd, breadcrumb]} />
       {/* Page header */}
-      <section className="pt-32 pb-16 px-6 border-b border-[#e5e5e5]">
+      <section className="pt-32 pb-16 px-6 border-b border-[#d2d2d7]">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <p className="text-xs tracking-[0.3em] text-[#6b6b6b] uppercase mb-4">Services</p>
-            <h1 className="font-serif text-4xl md:text-6xl font-bold text-[#0a0a0a]">
+            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Services</p>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-[#1d1d1f]">
               サービス
             </h1>
           </FadeIn>
@@ -126,32 +126,32 @@ export default function ServicesPage() {
         <section
           key={s.id}
           id={s.id}
-          className={`py-24 px-6 ${idx % 2 === 1 ? "bg-[#f9f9f9]" : ""}`}
+          className={`py-24 px-6 ${idx % 2 === 1 ? "bg-[#f5f5f7]" : ""}`}
         >
           <div className="max-w-6xl mx-auto">
             <FadeIn>
               <div className="flex items-baseline gap-4 mb-8">
-                <span className="font-serif text-6xl font-bold text-[#e5e5e5]">{s.number}</span>
+                <span className="font-display text-6xl font-bold text-[#d2d2d7]">{s.number}</span>
                 <div>
-                  <p className="text-xs tracking-[0.2em] text-[#6b6b6b] uppercase mb-1">{s.subtitle}</p>
-                  <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#0a0a0a]">{s.title}</h2>
+                  <p className="text-xs tracking-[0.2em] text-[#6e6e73] uppercase mb-1">{s.subtitle}</p>
+                  <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1d1d1f]">{s.title}</h2>
                 </div>
               </div>
-              <p className="font-serif text-lg text-[#0a0a0a] mb-6 border-l-2 border-[#0a0a0a] pl-4">
+              <p className="font-display text-lg text-[#1d1d1f] mb-6 border-l-2 border-[#1d1d1f] pl-4">
                 {s.lead}
               </p>
-              <p className="text-sm text-[#6b6b6b] leading-relaxed mb-12 max-w-2xl">{s.description}</p>
+              <p className="text-sm text-[#6e6e73] leading-relaxed mb-12 max-w-2xl">{s.description}</p>
             </FadeIn>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <FadeIn delay={0.1}>
-                <h3 className="text-xs tracking-[0.2em] text-[#6b6b6b] uppercase mb-6">
+                <h3 className="text-xs tracking-[0.2em] text-[#6e6e73] uppercase mb-6">
                   こんな課題はありませんか
                 </h3>
                 <ul className="space-y-4">
                   {s.pains.map((pain) => (
-                    <li key={pain} className="flex items-start gap-3 text-sm text-[#6b6b6b]">
-                      <span className="mt-2 w-1.5 h-1.5 border border-[#6b6b6b] rounded-full flex-shrink-0" />
+                    <li key={pain} className="flex items-start gap-3 text-sm text-[#6e6e73]">
+                      <span className="mt-2 w-1.5 h-1.5 border border-[#6e6e73] rounded-full flex-shrink-0" />
                       {pain}
                     </li>
                   ))}
@@ -159,14 +159,14 @@ export default function ServicesPage() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h3 className="text-xs tracking-[0.2em] text-[#6b6b6b] uppercase mb-6">
+                <h3 className="text-xs tracking-[0.2em] text-[#6e6e73] uppercase mb-6">
                   提供メニュー
                 </h3>
                 <div className="space-y-4">
                   {s.menu.map((m) => (
-                    <div key={m.item} className="border-b border-[#e5e5e5] pb-4">
-                      <p className="text-sm font-bold text-[#0a0a0a] mb-1">{m.item}</p>
-                      <p className="text-xs text-[#6b6b6b]">{m.desc}</p>
+                    <div key={m.item} className="border-b border-[#d2d2d7] pb-4">
+                      <p className="text-sm font-bold text-[#1d1d1f] mb-1">{m.item}</p>
+                      <p className="text-xs text-[#6e6e73]">{m.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -177,15 +177,15 @@ export default function ServicesPage() {
       ))}
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-[#0a0a0a] text-center">
+      <section className="py-20 px-6 bg-[#1d1d1f] text-center">
         <FadeIn>
-          <p className="text-sm text-[#6b6b6b] mb-6 leading-relaxed">
+          <p className="text-sm text-[#6e6e73] mb-6 leading-relaxed">
             まずは課題を話してみましょう。<br />
             ご支援内容・料金はご状況に応じてご提案します。
           </p>
           <Link
             href="/contact"
-            className="inline-block border border-white text-white px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#0a0a0a] transition-colors"
+            className="inline-block border border-white text-white px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#1d1d1f] transition-colors"
           >
             お問い合わせ
           </Link>

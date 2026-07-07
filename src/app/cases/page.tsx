@@ -66,11 +66,11 @@ const cases = [
 ];
 
 const categoryColors: Record<string, string> = {
-  "事業戦略": "bg-[#0a0a0a] text-white",
-  "新規事業": "bg-[#6b6b6b] text-white",
-  "市場調査": "bg-[#e5e5e5] text-[#0a0a0a]",
-  "組織開発・研修": "bg-[#f9f9f9] text-[#0a0a0a] border border-[#e5e5e5]",
-  "ビジネスコーチング": "bg-[#f9f9f9] text-[#0a0a0a] border border-[#e5e5e5]",
+  "事業戦略": "bg-[#1d1d1f] text-white",
+  "新規事業": "bg-[#6e6e73] text-white",
+  "市場調査": "bg-[#d2d2d7] text-[#1d1d1f]",
+  "組織開発・研修": "bg-[#f5f5f7] text-[#1d1d1f] border border-[#d2d2d7]",
+  "ビジネスコーチング": "bg-[#f5f5f7] text-[#1d1d1f] border border-[#d2d2d7]",
 };
 
 export default function CasesPage() {
@@ -95,11 +95,11 @@ export default function CasesPage() {
     <>
       <JsonLd data={[itemList, breadcrumb]} />
       {/* Page header */}
-      <section className="pt-32 pb-16 px-6 border-b border-[#e5e5e5]">
+      <section className="pt-32 pb-16 px-6 border-b border-[#d2d2d7]">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <p className="text-xs tracking-[0.3em] text-[#6b6b6b] uppercase mb-4">Cases</p>
-            <h1 className="font-serif text-4xl md:text-6xl font-bold text-[#0a0a0a]">
+            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Cases</p>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-[#1d1d1f]">
               支援実績
             </h1>
           </FadeIn>
@@ -108,22 +108,22 @@ export default function CasesPage() {
 
       {/* Cases grid */}
       <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#e5e5e5]">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#d2d2d7]">
           {cases.map((c, i) => (
             <FadeIn key={`${c.title}-${i}`} delay={(i % 2) * 0.1}>
-              <div className="p-10 border-b border-[#e5e5e5] md:odd:border-r">
+              <div className="p-10 border-b border-[#d2d2d7] md:odd:border-r">
                 <div className="flex items-center gap-3 mb-6">
-                  <span className={`text-xs px-2.5 py-1 tracking-wider ${categoryColors[c.category] || "bg-[#e5e5e5] text-[#0a0a0a]"}`}>
+                  <span className={`text-xs px-2.5 py-1 tracking-wider ${categoryColors[c.category] || "bg-[#d2d2d7] text-[#1d1d1f]"}`}>
                     {c.category}
                   </span>
-                  <span className="text-xs text-[#6b6b6b]">{c.region}</span>
-                  <span className="text-xs text-[#6b6b6b]">/ {c.period}</span>
+                  <span className="text-xs text-[#6e6e73]">{c.region}</span>
+                  <span className="text-xs text-[#6e6e73]">/ {c.period}</span>
                 </div>
-                <p className="text-xs text-[#6b6b6b] mb-2">{c.client}</p>
-                <h3 className="font-serif text-base font-bold text-[#0a0a0a] mb-4 leading-snug">
+                <p className="text-xs text-[#6e6e73] mb-2">{c.client}</p>
+                <h3 className="font-display text-base font-bold text-[#1d1d1f] mb-4 leading-snug">
                   {c.title}
                 </h3>
-                <p className="text-sm text-[#6b6b6b] leading-relaxed">{c.description}</p>
+                <p className="text-sm text-[#6e6e73] leading-relaxed">{c.description}</p>
               </div>
             </FadeIn>
           ))}
@@ -131,14 +131,14 @@ export default function CasesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-[#0a0a0a] text-center">
+      <section className="py-20 px-6 bg-[#1d1d1f] text-center">
         <FadeIn>
-          <p className="text-sm text-[#6b6b6b] mb-6 leading-relaxed">
+          <p className="text-sm text-[#6e6e73] mb-6 leading-relaxed">
             貴社の状況に合わせた支援内容をご提案します。
           </p>
           <Link
             href="/contact"
-            className="inline-block border border-white text-white px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#0a0a0a] transition-colors"
+            className="inline-block border border-white text-white px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#1d1d1f] transition-colors"
           >
             お問い合わせ
           </Link>
