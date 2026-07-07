@@ -11,7 +11,7 @@ export default function Footer() {
 
         <nav className="flex flex-col gap-3">
           {[
-            { label: "Profile — 代表 秦善成", href: "/profile" },
+            { label: "Profile", href: "/profile" },
             { label: "Services", href: "/services" },
             { label: "Cases", href: "/cases" },
             { label: "Insights", href: "/insights" },
