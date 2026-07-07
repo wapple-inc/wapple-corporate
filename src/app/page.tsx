@@ -43,13 +43,6 @@ const services = [
   },
 ];
 
-const numbers = [
-  { value: "43+", label: "支援プロジェクト" },
-  { value: "10+", label: "対応業種" },
-  { value: "10+", label: "対応国・地域" },
-  { value: "10", label: "年のコンサル経験" },
-];
-
 export default function Home() {
   return (
     <>
@@ -88,7 +81,7 @@ export default function Home() {
                 href="/contact"
                 className="bg-[#1d1d1f] text-white rounded-full px-8 py-3 text-sm tracking-wider hover:bg-[#424245] transition-colors"
               >
-                お問い合わせ
+                無料相談を予約する
               </Link>
             </div>
           </FadeIn>
@@ -172,7 +165,7 @@ export default function Home() {
             href="/contact"
             className="inline-block border border-white text-white rounded-full px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#1d1d1f] transition-colors"
           >
-            お問い合わせ
+            初回相談を予約する（無料）
           </Link>
         </FadeIn>
       </section>

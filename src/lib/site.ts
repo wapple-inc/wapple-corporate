@@ -16,7 +16,7 @@ export const ORG = {
   legalName: "株式会社Wapple",
   url: SITE_URL,
   logo: `${SITE_URL}/og-image.png`,
-  email: "yoshinari.hata@wapple.life",
+  email: "yoshinari.hata@wapple.co.jp",
   foundingDate: "2026-04-24",
   founderName: "秦 善成",
   address: {
@@ -49,7 +49,7 @@ export const PERSON = {
   url: `${SITE_URL}/profile`,
   image: `${SITE_URL}/profile.png`,
   description:
-    "株式会社Wapple代表取締役。三菱UFJリサーチ＆コンサルティングでグローバル戦略コンサルタントとして6年間従事し、市場調査・事業戦略立案・新規事業検討を担当。その後Apple Japanにてデータ分析・業務改善・人材育成・研修設計に従事。2026年に株式会社Wappleを設立し、コンサルティング・企業研修・コーチングを提供。ICF認定コーチ（ACC）。",
+    "株式会社Wapple代表取締役。三菱UFJリサーチ＆コンサルティングで市場調査・事業戦略立案・新規事業検討を担当。その後Apple Japanにてデータ分析・業務改善・人材育成・研修設計に従事。2026年に株式会社Wappleを設立し、コンサルティング・企業研修・コーチングを提供。ICF認定コーチ（ACC）。",
   // 同一人物のWeb上の別拠点（検索エンジンのエンティティ統合シグナル）
   sameAs: ["https://www.wapple.life"],
   credentials: [

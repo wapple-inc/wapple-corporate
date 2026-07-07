@@ -36,6 +36,7 @@ const personJsonLd = {
 const companyInfo = [
   { label: "会社名（商号）", value: "株式会社Wapple" },
   { label: "代表者名", value: "秦 善成" },
+  { label: "事業内容", value: "事業戦略コンサルティング／企業研修・人材開発／ビジネスコーチング" },
   { label: "所在地", value: "東京都目黒区下目黒１丁目１番１４号 コノトラビル７F" },
   { label: "設立日", value: "2026年4月24日" },
 ];
@@ -106,7 +107,7 @@ export default function AboutPage() {
             </FadeIn>
             <FadeIn delay={0.1} className="md:col-span-2">
               <p className="text-sm text-[#6e6e73] leading-relaxed mb-4">
-                三菱UFJリサーチ＆コンサルティングにてグローバル戦略コンサルタントとして6年間従事し、市場調査・事業戦略立案・新規事業検討など多数のプロジェクトを担当。その後、Apple Japanにてデータ分析・業務改善・人材育成に従事した。
+                三菱UFJリサーチ＆コンサルティングにて市場調査・事業戦略立案・新規事業検討を担当。その後、Apple Japanにてデータ分析・業務改善・人材育成に従事した。
               </p>
               <p className="text-sm text-[#6e6e73] leading-relaxed mb-10">
                 こうした経験を経て2026年に株式会社Wappleを設立。コンサルティング・企業研修・ビジネスコーチングを通じて、企業の課題解決から行動変容までを一貫して支援している。

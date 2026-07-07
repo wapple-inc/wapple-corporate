@@ -185,9 +185,9 @@ export default function ServicesPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-block border border-white text-white px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#1d1d1f] transition-colors"
+            className="inline-block border border-white text-white rounded-full px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#1d1d1f] transition-colors"
           >
-            お問い合わせ
+            初回相談を予約する（無料）
           </Link>
         </FadeIn>
       </section>

@@ -9,7 +9,7 @@ import { SITE_URL, PERSON, personJsonLd, breadcrumbJsonLd } from "@/lib/site";
 export const metadata: Metadata = {
   title: "代表取締役 秦善成（はた よしなり）プロフィール",
   description:
-    "株式会社Wapple代表取締役・秦善成（Yoshinari Hata）のプロフィール。三菱UFJリサーチ＆コンサルティングで戦略コンサルタント、Apple Japanで人材育成・データ分析に従事後、2026年に株式会社Wappleを設立。ICF認定コーチ（ACC）。",
+    "株式会社Wapple代表取締役・秦善成（Yoshinari Hata）のプロフィール。三菱UFJリサーチ＆コンサルティング、Apple Japanを経て、2026年に株式会社Wappleを設立。事業戦略コンサルティング・企業研修・コーチングを提供。ICF認定コーチ（ACC）。",
   alternates: { canonical: "/profile" },
   openGraph: {
     title: "代表取締役 秦善成（はた よしなり）プロフィール | 株式会社Wapple",
@@ -34,45 +34,27 @@ const profilePageJsonLd = {
 const career = [
   {
     period: "2009 – 2013",
-    org: "早稲田大学 政治経済学部",
-    role: "経済学科 卒業",
+    org: "早稲田大学 政治経済学部 経済学科",
     detail: "在学中に北京大学（対外漢語教育学院）へ留学し、中国語を習得。",
   },
   {
     period: "2014 – 2020",
     org: "三菱UFJリサーチ＆コンサルティング",
-    role: "グローバル戦略コンサルタント",
     detail:
-      "小売・流通・消費財業界を中心に、海外展開・新規事業の市場調査、事業戦略立案、ビジネスデューデリジェンスを担当。50件以上のプロジェクトに参画し、うち10件でプロジェクトリーダーを務める。",
+      "小売・流通・消費財業界を中心に、海外展開・新規事業の市場調査、事業戦略立案、ビジネスデューデリジェンスに従事。",
   },
   {
     period: "2020 – 2024",
     org: "Apple Japan",
-    role: "Fraud Specialist / Trainer / Senior Fraud Investigator",
     detail:
-      "取引データの分析・リスク評価に加え、新入社員・中途社員向け研修の設計と実施、VOC分析に基づく改善施策を担当。トレーニング運営を通じてチームパフォーマンス指標を5%向上。",
+      "取引データの分析・リスク評価に加え、新入社員・中途社員向け研修の設計と実施、VOC分析に基づく改善施策を担当。",
   },
   {
-    period: "2025 – 2026",
-    org: "独立（個人事業主）",
-    role: "コンサルタント / 研修講師 / コーチ",
-    detail:
-      "事業戦略・市場調査コンサルティング、企業研修の企画・登壇、経営者・会社員向けコーチングを提供。",
-  },
-  {
-    period: "2026 –",
+    period: "2025 –",
     org: "株式会社Wapple",
-    role: "代表取締役（設立）",
     detail:
-      "コンサルティング・人材開発・企業研修・コーチング事業を展開。課題の構造化から行動変容までの伴走型支援を提供している。",
+      "独立を経て株式会社Wappleを設立。事業戦略コンサルティング・企業研修・コーチングを通じて、課題の構造化から行動変容までを伴走型で支援している。",
   },
-];
-
-const numbers = [
-  { value: "43+", label: "支援プロジェクト" },
-  { value: "10+", label: "対応業種" },
-  { value: "10+", label: "対応国・地域" },
-  { value: "10年", label: "のコンサル・育成経験" },
 ];
 
 const expertise = [
@@ -151,20 +133,12 @@ export default function ProfilePage() {
               その両方から企業と個人に伴走する。
             </h2>
             <p className="text-sm text-[#6e6e73] leading-relaxed mb-4">
-              三菱UFJリサーチ＆コンサルティングにてグローバル戦略コンサルタントとして6年間従事し、市場調査・事業戦略立案・新規事業検討など50件以上のプロジェクトを担当。その後、Apple
-              Japanにてデータ分析・業務改善・研修設計・人材育成に携わる。
+              三菱UFJリサーチ＆コンサルティングにて市場調査・事業戦略立案・新規事業検討に携わる。その後、Apple
+              Japanにてデータ分析・業務改善・研修設計・人材育成に従事。
             </p>
-            <p className="text-sm text-[#6e6e73] leading-relaxed mb-10">
+            <p className="text-sm text-[#6e6e73] leading-relaxed">
               2026年、株式会社Wappleを設立。事業や組織の課題を構造的に整理する視点と、一人ひとりの成長・行動変容を支援する視点の双方を活かし、コンサルティング・企業研修・コーチングを提供している。国際コーチング連盟（ICF）認定コーチ（ACC）。
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {numbers.map((n) => (
-                <div key={n.label}>
-                  <p className="font-display text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-1">{n.value}</p>
-                  <p className="text-xs text-[#6e6e73] tracking-wider">{n.label}</p>
-                </div>
-              ))}
-            </div>
           </FadeIn>
         </div>
       </section>
@@ -182,8 +156,7 @@ export default function ProfilePage() {
                 <div className="grid grid-cols-1 md:grid-cols-[10rem_1fr] gap-2 md:gap-6 py-6 border-t border-[#d2d2d7] last:border-b">
                   <p className="text-xs tracking-wider text-[#6e6e73] pt-1">{c.period}</p>
                   <div>
-                    <p className="text-base font-semibold text-[#1d1d1f]">{c.org}</p>
-                    <p className="text-sm text-[#6e6e73] mb-2">{c.role}</p>
+                    <p className="text-base font-semibold text-[#1d1d1f] mb-2">{c.org}</p>
                     <p className="text-sm text-[#6e6e73] leading-relaxed">{c.detail}</p>
                   </div>
                 </div>
@@ -267,7 +240,7 @@ export default function ProfilePage() {
               href="/contact"
               className="bg-[#1d1d1f] text-white rounded-full px-8 py-3 text-sm tracking-wider hover:bg-[#424245] transition-colors"
             >
-              お問い合わせ
+              初回相談を予約する（無料）
             </Link>
           </div>
         </FadeIn>

@@ -43,7 +43,7 @@ export default function Header() {
             href="/contact"
             className="text-sm border border-[#1d1d1f] rounded-full px-4 py-2 hover:bg-[#1d1d1f] hover:text-white transition-colors tracking-wider"
           >
-            お問い合わせ
+            無料相談
           </Link>
         </nav>
 
