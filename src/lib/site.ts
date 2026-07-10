@@ -54,7 +54,6 @@ export const PERSON = {
   sameAs: ["https://www.wapple.life"],
   credentials: [
     "国際コーチング連盟（ICF）アソシエイト認定コーチ（ACC）",
-    "JADP認定上級心理カウンセラー",
     "一般社団法人マインドフルネス瞑想協会認定講師",
     "Digital Wellness Institute Certified Digital Wellness Educator",
   ],

@@ -23,21 +23,21 @@ const services = [
   {
     title: "事業戦略\nコンサルティング",
     description:
-      "市場調査・競合分析・論点整理・意思決定支援。経営層の「次の一手」を、データと対話で共に考えます。",
+      "市場調査・競合分析・論点整理・意思決定支援。生成AIも活用しながら、経営層の「次の一手」をデータと対話で共に考えます。",
     href: "/services#consulting",
     icon: <ChartIcon />,
   },
   {
     title: "企業研修\n人材開発",
     description:
-      "一方向型の講義ではなく、対話・内省・実践を重視した研修設計。組織の学習文化を底上げします。",
+      "思考・対話の基礎から生成AIの活用、セルフマネジメントまで。対話と実践を重視した研修設計で、組織の学習文化を底上げします。",
     href: "/services#training",
     icon: <PeopleIcon />,
   },
   {
     title: "ビジネスコーチング",
     description:
-      "経営者・管理職を対象とした個人・グループコーチング。思考を整理し、意思決定と行動変容を支援します。",
+      "経営者から管理職・ビジネスパーソンまで。思考を整理し、意思決定と行動変容を支援します。",
     href: "/services#coaching",
     icon: <CompassIcon />,
   },
@@ -138,7 +138,7 @@ export default function Home() {
               その土台づくりを、コンサルティング・企業研修・ビジネスコーチングを通じて支援します。
             </p>
             <p className="text-sm text-[#6e6e73] leading-relaxed mb-6">
-              三菱UFJリサーチ＆コンサルティングにて戦略コンサルタントとして6年間、その後Apple Japanにてデータ分析・人材育成に従事した経験を持つ代表が、戦略と現場、双方の視点から支援します。
+              三菱UFJリサーチ＆コンサルティングにて戦略コンサルタントとして、その後Apple Japanにてデータ分析・人材育成に従事した経験を持つ代表が、戦略と現場、双方の視点から支援します。
             </p>
             <p className="text-sm text-[#6e6e73] mb-6">
               代表取締役　<span className="text-[#1d1d1f] font-semibold">秦 善成</span>（Yoshinari Hata）

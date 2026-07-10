@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
 import ContactForm from "@/components/ContactForm";
-import ProcessSteps from "@/components/ProcessSteps";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL, SITE_NAME, breadcrumbJsonLd } from "@/lib/site";
 
@@ -69,9 +68,6 @@ export default function ContactPage() {
           </FadeIn>
         </div>
       </section>
-
-      {/* Process */}
-      <ProcessSteps />
     </>
   );
 }
