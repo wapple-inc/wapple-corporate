@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import JsonLd from "@/components/JsonLd";
+import ProcessSteps from "@/components/ProcessSteps";
 import { SITE_URL, SITE_NAME, breadcrumbJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -25,7 +26,7 @@ const services = [
     subtitle: "Strategy Consulting",
     lead: "複雑な課題を整理し、経営の意思決定を支援する。",
     description:
-      "市場調査・競合分析・事業検討支援を通じて、経営判断に必要な材料を整理します。",
+      "市場調査・競合分析・事業検討支援を通じて、経営判断に必要な材料を整理します。生成AIを活用しながら、スピードと質を両立します。",
     pains: [
       "新規事業を検討しているが、何から手をつければいいか分からない",
       "競合・市場環境の変化に対して、打ち手が見えていない",
@@ -33,7 +34,7 @@ const services = [
       "戦略は描けているが、現場への浸透・実装で止まっている",
     ],
     menu: [
-      { item: "市場調査・競合分析", desc: "定量・定性調査を組み合わせ、市場実態を把握" },
+      { item: "市場調査・競合分析", desc: "生成AIを活用した調査設計と定量・定性分析で、市場実態を迅速に把握" },
       { item: "事業戦略立案", desc: "市場環境・競合を踏まえた戦略の設計と意思決定支援" },
       { item: "新規事業検討支援", desc: "事業アイデアの検証から事業計画策定まで" },
     ],
@@ -50,10 +51,12 @@ const services = [
       "研修を実施しても、現場での行動が変わらない",
       "管理職・チームリーダーのマネジメント力を底上げしたい",
       "ロジカルシンキングやコミュニケーション力を組織全体で強化したい",
+      "生成AIを導入したが、現場で活用が定着していない",
       "研修プログラムを一から設計する時間・リソースがない",
     ],
     menu: [
       { item: "ロジカルシンキング研修", desc: "構造的思考・論点整理・資料作成力の強化" },
+      { item: "生成AI活用研修", desc: "業務での実践を前提としたAIの活用方法と、依存しないための使いこなし方" },
       { item: "コミュニケーション研修", desc: "対話力・聴く力・伝える力の向上" },
       { item: "管理職向けマネジメント研修", desc: "チームビルディング・フィードバック・組織改善" },
       { item: "マインドフルネス・セルフマネジメント研修", desc: "自己認識・集中力・ストレス対応力の向上" },
@@ -175,6 +178,9 @@ export default function ServicesPage() {
           </div>
         </section>
       ))}
+
+      {/* Process */}
+      <ProcessSteps />
 
       {/* CTA */}
       <section className="py-20 px-6 bg-[#1d1d1f] text-center">

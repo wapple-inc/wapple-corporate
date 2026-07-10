@@ -137,6 +137,9 @@ export default function Home() {
               そして、一人ひとりの小さな気づきと行動の変化を、組織全体へ波紋のように広げていく。
               その土台づくりを、コンサルティング・企業研修・ビジネスコーチングを通じて支援します。
             </p>
+            <p className="text-sm text-[#6e6e73] leading-relaxed mb-6">
+              三菱UFJリサーチ＆コンサルティングにて戦略コンサルタントとして6年間、その後Apple Japanにてデータ分析・人材育成に従事した経験を持つ代表が、戦略と現場、双方の視点から支援します。
+            </p>
             <p className="text-sm text-[#6e6e73] mb-6">
               代表取締役　<span className="text-[#1d1d1f] font-semibold">秦 善成</span>（Yoshinari Hata）
             </p>
