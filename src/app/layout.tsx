@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import NetworkBackground from "@/components/NetworkBackground";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, PERSON } from "@/lib/site";
 
 const defaultTitle = "株式会社Wapple | 課題を構造化し、行動変容まで伴走する。";
@@ -42,6 +43,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className="antialiased">
+        <GoogleAnalytics />
         <NetworkBackground />
         <Header />
         <main>{children}</main>
