@@ -26,11 +26,12 @@ const services = [
     available: true,
   },
   {
-    category: "Coming Soon",
-    title: "近日公開予定",
-    description: "新しい個人向けサービスを準備中です。公開をお待ちください。",
-    href: null,
-    available: false,
+    category: "Coaching",
+    title: "ジャーナリング・コーチング",
+    description:
+      "「書く」と「話す」の両輪で内省を深める3ヶ月のプログラム。ノート1冊で始められ、ジャーナリング体験つきの無料セッションから参加できます。",
+    href: "https://www.wapple.life/journaling",
+    available: true,
   },
 ];
 
