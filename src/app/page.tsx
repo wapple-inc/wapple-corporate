@@ -5,13 +5,10 @@ import JsonLd from "@/components/JsonLd";
 import { SITE_URL, SITE_NAME, organizationJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
-  // 「秦善成」の指名検索でトップページが最上位に来るよう、トップのみ
-  // title / description に代表名を含める（/profile はサイトリンク側に寄せる狙い）
-  title: {
-    absolute: "株式会社Wapple（代表・秦善成）| 課題を構造化し、行動変容まで伴走する。",
-  },
+  // 指名検索対策: 代表名は title には出さない（本人希望・見た目優先）。
+  // description に会社情報として自然な形で残し、名前クエリとの関連性を維持する。
   description:
-    "株式会社Wapple（代表取締役・秦善成）は、事業戦略コンサルティング・企業研修・コーチングを通じて、企業の成長と組織変革を伴走型で支援します。",
+    "株式会社Wappleは、事業戦略コンサルティング・企業研修・コーチングを通じて、企業の成長と組織変革を伴走型で支援します。代表取締役：秦善成。",
   alternates: { canonical: "/" },
 };
 
