@@ -1,4 +1,4 @@
-// 重点の4研修：編集的なリスト。ホバーで淡い灰青の面が左から満ち、矢印が進む
+// 注力している4つの研修：編集的なリスト。ホバーで淡い灰青の面が左から満ち、矢印が進む
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import type { FocusProgram } from "@/lib/programs";

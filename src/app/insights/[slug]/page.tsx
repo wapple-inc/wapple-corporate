@@ -114,7 +114,7 @@ export default async function InsightPage({ params }: Props) {
               <p className="text-sm text-[#1d1d1f] font-bold mb-1">{ORG.founderName}</p>
               <p className="text-sm text-[#6e6e73] leading-relaxed">
                 株式会社Wapple 代表取締役。三菱UFJリサーチ＆コンサルティング、Apple Japanを経て、
-                事業戦略・人材開発・コーチングの伴走支援を行う。
+                研修とコーチングを通じて人材開発に取り組んでいる。
                 <Link href="/profile" className="ml-1 underline hover:text-[#1d1d1f]">
                   プロフィール
                 </Link>

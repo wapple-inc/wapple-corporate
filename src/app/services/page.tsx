@@ -46,7 +46,7 @@ export default function ProgramsPage() {
   ]);
 
   const index = [
-    { href: "#training", label: "重点の4研修" },
+    { href: "#training", label: "注力している4つの研修" },
     { href: "#level", label: "階層別研修" },
     { href: "#coaching", label: "コーチング" },
     { href: "#approach", label: "進め方" },
@@ -59,7 +59,7 @@ export default function ProgramsPage() {
       <PageHero label="SERVICES" title={["サービス"]} sub="研修・ワークショップ・コーチング">
         <div className="mt-12 md:mt-16 grid md:grid-cols-[1.3fr_1fr] gap-10 md:gap-16 items-end">
           <p className="t-lead text-[#6e6e73]">
-            生成AIの活用が広がるほど、人の判断力や対話の力が問われます。研修とワークショップは、対象者と課題に合わせて設計します。時間や人数、対面・オンラインの形式はご相談ください。
+            生成AIの活用が広がるほど、人の判断力や対話の力が問われます。研修とワークショップは、企業や対象者の課題に合わせて設計します。時間や人数、対面・オンラインなどの条件も含めて、お気軽にご相談ください。
           </p>
           <nav aria-label="このページの目次" className="border-t border-[#d2d2d7]">
             {index.map((it, i) => (
@@ -75,11 +75,11 @@ export default function ProgramsPage() {
         </div>
       </PageHero>
 
-      {/* 01 重点の4研修 */}
+      {/* 01 注力している4つの研修 */}
       <section id="training" className="scroll-mt-20 px-5 md:px-10 py-24 md:py-36">
         <div className="max-w-[1280px] mx-auto">
           <SectionLabel n="01" label="TRAINING & WORKSHOP" />
-          <LineReveal className="mt-8 t-h2" lines={["重点の4研修"]} />
+          <LineReveal className="mt-8 t-h2" lines={["注力している4つの研修"]} />
 
           <div className="mt-16 md:mt-20 border-t border-[#1d1d1f]">
             {focusPrograms.map((p, i) => (

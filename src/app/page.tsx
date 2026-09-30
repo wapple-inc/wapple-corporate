@@ -102,7 +102,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 02 重点の4研修 */}
+      {/* 02 注力している4つの研修 */}
       <section className="px-5 md:px-10 py-24 md:py-36 bg-surface">
         <div className="max-w-[1280px] mx-auto">
           <SectionLabel n="02" label="FOCUS" />

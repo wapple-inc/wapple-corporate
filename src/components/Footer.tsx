@@ -16,7 +16,6 @@ export default function Footer() {
             <br />
             人の可能性をひらく
           </p>
-          <p className="mt-6 text-sm text-[#6e6e73]">株式会社Wapple｜東京都目黒区</p>
         </div>
         <nav className="grid grid-cols-2 gap-x-8 gap-y-4 content-start" aria-label="フッターメニュー">
           {links.map((item) => (

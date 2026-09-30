@@ -9,12 +9,12 @@ import { getAllInsights } from "@/lib/insights";
 export const metadata: Metadata = {
   title: "コラム",
   description:
-    "事業戦略・人材開発・組織開発・コーチングに関する実務的な知見をお届けします。市場調査の進め方、研修設計、論点整理など、現場で使える考え方をまとめています。",
+    "研修や人材育成、コーチングの現場から、職場で役立つ考え方や進め方をお届けします。",
   alternates: { canonical: "/insights" },
   openGraph: {
     title: "コラム",
     description:
-      "事業戦略・人材開発・組織開発・コーチングに関する実務的な知見をお届けします。",
+      "研修や人材育成、コーチングの現場から、職場で役立つ考え方や進め方をお届けします。",
     url: `${SITE_URL}/insights`,
   },
 };
@@ -46,7 +46,7 @@ export default function InsightsPage() {
       <JsonLd data={[collectionJsonLd, breadcrumb]} />
 
       <PageHero label="COLUMN" title={["コラム"]}>
-        <p className="mt-8 t-lead text-[#6e6e73] max-w-[36em]">事業戦略・人材開発・組織開発・コーチングに関する実務的な知見をお届けします。</p>
+        <p className="mt-8 t-lead text-[#6e6e73] max-w-[36em]">研修や人材育成、コーチングの現場から、職場で役立つ考え方や進め方をお届けします。</p>
       </PageHero>
 
       {/* Article list with filter */}
