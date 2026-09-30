@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import NetworkBackground from "@/components/NetworkBackground";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, PERSON } from "@/lib/site";
 
-const defaultTitle = "株式会社Wapple | 課題を構造化し、行動変容まで伴走する。";
+const defaultTitle = "株式会社Wapple｜学びと経験で人の可能性をひらく";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s | 株式会社Wapple",
   },
   description: SITE_DESCRIPTION,
-  keywords: ["コンサルティング", "企業研修", "コーチング", "事業戦略", "組織開発", "人材育成", "新規事業", "市場調査", "秦善成", "Wapple"],
+  keywords: ["人材開発", "企業研修", "クリティカルシンキング研修", "セルフマネジメント研修", "1on1研修", "フィードバック研修", "生成AI研修", "コーチング", "秦善成", "Wapple"],
   authors: [{ name: SITE_NAME }, { name: PERSON.name, url: `${SITE_URL}/profile` }],
   robots: { index: true, follow: true },
   openGraph: {
@@ -44,7 +43,6 @@ export default function RootLayout({
     <html lang="ja">
       <body className="antialiased">
         <GoogleAnalytics />
-        <NetworkBackground />
         <Header />
         <main>{children}</main>
         <Footer />

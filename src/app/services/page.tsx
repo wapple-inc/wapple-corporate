@@ -2,105 +2,40 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import JsonLd from "@/components/JsonLd";
-import ProcessSteps from "@/components/ProcessSteps";
+import FlowLine from "@/components/FlowLine";
 import { SITE_URL, SITE_NAME, breadcrumbJsonLd } from "@/lib/site";
+import { focusPrograms, levelPrograms, approach, flow, evidence, coaching, CTA } from "@/lib/programs";
 
 export const metadata: Metadata = {
   title: "サービス",
   description:
-    "Wappleの3つのサービス：事業戦略コンサルティング（市場調査・新規事業支援）、企業研修・人材開発、ビジネスコーチング。経営課題の整理から行動変容まで一貫支援。",
+    "研修・ワークショップ・コーチング。AI時代のクリティカルシンキング、セルフマネジメント、1on1・フィードバック、職務別の生成AI活用ワークショップのほか、新入社員から新任管理職までの階層別研修に対応します。",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "サービス",
-    description:
-      "事業戦略コンサルティング・企業研修・ビジネスコーチング。経営課題の整理から行動変容まで一貫支援。",
+    title: "サービス｜株式会社Wapple",
     url: `${SITE_URL}/services`,
   },
 };
 
-const services = [
-  {
-    id: "consulting",
-    number: "01",
-    title: "事業戦略コンサルティング",
-    subtitle: "Strategy Consulting",
-    lead: "複雑な課題を整理し、経営の意思決定を支援する。",
-    description:
-      "市場調査・競合分析・事業検討支援を通じて、経営判断に必要な材料を整理します。生成AIを活用しながら、スピードと質を両立します。",
-    pains: [
-      "新規事業を検討しているが、何から手をつければいいか分からない",
-      "競合・市場環境の変化に対して、打ち手が見えていない",
-      "課題は感じているが、論点が整理できていない",
-      "戦略は描けているが、現場への浸透・実装で止まっている",
-    ],
-    menu: [
-      { item: "市場調査・競合分析", desc: "生成AIを活用した調査設計と定量・定性分析で、市場実態を迅速に把握" },
-      { item: "事業戦略立案", desc: "市場環境・競合を踏まえた戦略の設計と意思決定支援" },
-      { item: "新規事業検討支援", desc: "事業アイデアの検証から事業計画策定まで" },
-    ],
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "企業研修・ワークショップ",
+  serviceType: "企業研修",
+  url: `${SITE_URL}/services`,
+  provider: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: SITE_NAME },
+  areaServed: "JP",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "研修プログラム",
+    itemListElement: focusPrograms.map((p) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: p.name, description: `${p.summary}。対象：${p.audience}。時間：${p.duration}` },
+    })),
   },
-  {
-    id: "training",
-    number: "02",
-    title: "企業研修・人材開発",
-    subtitle: "Corporate Training",
-    lead: "知識の習得で終わらせず、現場で使われる学びへ。",
-    description:
-      "一方向の講義ではなく、対話と実践を重視した研修を設計。組織に学習文化を根付かせます。",
-    pains: [
-      "研修を実施しても、現場での行動が変わらない",
-      "ロジカルシンキングやコミュニケーション力を組織全体で強化したい",
-      "生成AIを導入したが、現場で活用が定着していない",
-      "研修プログラムを一から設計する時間・リソースがない",
-    ],
-    menu: [
-      { item: "ロジカルシンキング・コミュニケーション研修", desc: "構造的思考・論点整理と、対話力・伝える力の強化" },
-      { item: "生成AI活用研修", desc: "業務での実践を前提としたAIの活用方法と、依存しないための使いこなし方" },
-      { item: "マインドフルネス・セルフマネジメント研修", desc: "自己認識・集中力・ストレス対応力の向上" },
-    ],
-  },
-  {
-    id: "coaching",
-    number: "03",
-    title: "ビジネスコーチング",
-    subtitle: "Business Coaching",
-    lead: "思考を整理し、行動変容を支援する。",
-    description:
-      "意思決定・マネジメント・キャリアなど、個人が抱える課題に向き合い、次の行動を明確にします。階層を問わず、一人ひとりの変化を伴走支援します。",
-    pains: [
-      "経営判断に迷いが生じており、思考を整理したい",
-      "管理職として、部下への関わり方・マネジメントを見直したい",
-      "目標は明確だが、行動に移せずにいる",
-      "自分の強みと課題を客観的に把握し、成長につなげたい",
-    ],
-    menu: [
-      { item: "経営者・経営幹部向けコーチング", desc: "経営課題・意思決定・ビジョン実現を支援" },
-      { item: "管理職・リーダー向けコーチング", desc: "チームマネジメント・自己成長の促進" },
-      { item: "ビジネスパーソン向けコーチング", desc: "キャリア・行動変容・自律的思考習慣の形成" },
-    ],
-  },
-];
+};
 
-export default function ServicesPage() {
-  const servicesJsonLd = services.map((s) => ({
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: s.title,
-    serviceType: s.subtitle,
-    description: s.description,
-    url: `${SITE_URL}/services#${s.id}`,
-    provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
-    areaServed: "JP",
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: s.title,
-      itemListElement: s.menu.map((m) => ({
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: m.item, description: m.desc },
-      })),
-    },
-  }));
-
+export default function ProgramsPage() {
   const breadcrumb = breadcrumbJsonLd([
     { name: "ホーム", path: "/" },
     { name: "サービス", path: "/services" },
@@ -108,91 +43,149 @@ export default function ServicesPage() {
 
   return (
     <>
-      <JsonLd data={[...servicesJsonLd, breadcrumb]} />
-      {/* Page header */}
-      <section className="pt-32 pb-16 px-6 border-b border-[#d2d2d7]">
+      <JsonLd data={[serviceJsonLd, breadcrumb]} />
+
+      <section className="pt-36 pb-16 md:pt-44 md:pb-20 px-5 md:px-10 border-b border-[#e5e5ea]">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Services</p>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-[#1d1d1f]">
-              サービス
-            </h1>
+            <p className="eyebrow">SERVICES</p>
+            <h1 className="mt-4 text-[34px] md:text-[52px] font-semibold leading-[1.3]">サービス</h1>
+            <p className="mt-3 text-[17px] md:text-[20px] text-[#6e6e73]">研修・ワークショップ・コーチング</p>
+            <p className="mt-6 max-w-[720px] text-[15.5px] md:text-[17px] leading-[1.9] text-[#6e6e73]">
+              生成AIの活用が広がるほど、人の判断力や対話の力が問われます。<br className="hidden md:inline" />研修とワークショップは、対象者と課題に合わせて設計します。<br className="hidden md:inline" />時間や人数、対面・オンラインの形式はご相談ください。
+            </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* Service list */}
-      {services.map((s, idx) => (
-        <section
-          key={s.id}
-          id={s.id}
-          className={`py-24 px-6 ${idx % 2 === 1 ? "bg-[#f5f5f7]" : ""}`}
-        >
-          <div className="max-w-6xl mx-auto">
-            <FadeIn>
-              <div className="flex items-baseline gap-4 mb-8">
-                <span className="font-display text-6xl font-bold text-[#d2d2d7]">{s.number}</span>
-                <div>
-                  <p className="text-xs tracking-[0.2em] text-[#6e6e73] uppercase mb-1">{s.subtitle}</p>
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1d1d1f]">{s.title}</h2>
-                </div>
+      {/* 重点の4研修 */}
+      <section id="training" className="scroll-mt-20 py-16 md:py-24 px-5 md:px-10">
+        <div className="max-w-6xl mx-auto">
+          <p className="eyebrow">TRAINING &amp; WORKSHOP</p>
+          <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">重点の4研修</h2>
+          <div className="mt-10 space-y-6">
+            {focusPrograms.map((p) => (
+              <FadeIn key={p.id}>
+                <article id={p.id} className="scroll-mt-24 border border-[#e5e5ea] rounded-[20px] p-7 md:p-10">
+                  <div className="md:flex md:items-baseline md:justify-between gap-6">
+                    <h3 className="text-[21px] md:text-[26px] font-semibold">{p.name}</h3>
+                    <p className="mt-2 md:mt-0 text-[13px] text-[#6e6e73] shrink-0">
+                      対象：{p.audience}｜時間：{p.duration}
+                    </p>
+                  </div>
+                  <p className="mt-3 text-[15.5px] leading-[1.8] text-[#3e5871]">{p.summary}</p>
+                  <div className="mt-7 grid md:grid-cols-2 gap-8">
+                    <div>
+                      <p className="text-[13px] font-semibold text-[#6e6e73]">到達目標</p>
+                      <ul className="mt-3 space-y-2.5">
+                        {p.aims.map((a) => (
+                          <li key={a} className="text-[15px] leading-[1.7] pl-4 relative">
+                            <span className="absolute left-0 top-[0.7em] w-1.5 h-1.5 rounded-full bg-accent" />
+                            {a}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="text-[13px] font-semibold text-[#6e6e73]">主な内容</p>
+                      <ol className="mt-3 space-y-2.5">
+                        {p.contents.map((c, i) => (
+                          <li key={c} className="text-[15px] leading-[1.7] flex gap-3">
+                            <span className="text-accent font-semibold text-[13px] mt-[3px]">{String(i + 1).padStart(2, "0")}</span>
+                            {c}
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  </div>
+                </article>
+              </FadeIn>
+            ))}
+          </div>
+          <div className="mt-12 grid md:grid-cols-2 gap-8">
+            {evidence.map((e) => (
+              <div key={e.num} className="border-t-2 border-[#1d1d1f] pt-5">
+                <p className="text-[32px] font-semibold leading-tight">{e.num}</p>
+                <p className="mt-2 text-[14.5px] leading-[1.8]">{e.text}</p>
+                <a href={e.url} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-[12px] text-[#6e6e73] underline underline-offset-2">
+                  {e.source}
+                </a>
               </div>
-              <p className="font-display text-lg text-[#1d1d1f] mb-6 border-l-2 border-[#1d1d1f] pl-4">
-                {s.lead}
-              </p>
-              <p className="text-sm text-[#6e6e73] leading-relaxed mb-12 max-w-2xl">{s.description}</p>
-            </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <FadeIn delay={0.1}>
-                <h3 className="text-xs tracking-[0.2em] text-[#6e6e73] uppercase mb-6">
-                  こんな課題はありませんか
-                </h3>
-                <ul className="space-y-4">
-                  {s.pains.map((pain) => (
-                    <li key={pain} className="flex items-start gap-3 text-sm text-[#6e6e73]">
-                      <span className="mt-2 w-1.5 h-1.5 border border-[#6e6e73] rounded-full flex-shrink-0" />
-                      {pain}
-                    </li>
+      {/* 階層別 */}
+      <section className="bg-surface py-16 md:py-24 px-5 md:px-10">
+        <div className="max-w-6xl mx-auto">
+          <p className="eyebrow">BY LEVEL</p>
+          <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">階層別研修</h2>
+          <p className="mt-4 text-[15px] text-[#6e6e73]">2〜4時間を基本とし、1日研修や複数回のシリーズにも対応します。</p>
+          <div className="mt-10 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {levelPrograms.map((l) => (
+              <div key={l.level} className="bg-white rounded-2xl p-6">
+                <h3 className="text-[15px] font-semibold">{l.level}</h3>
+                <ul className="mt-3 space-y-1.5">
+                  {l.themes.map((t) => (
+                    <li key={t} className="text-[14px] text-[#424245]">{t}</li>
                   ))}
                 </ul>
-              </FadeIn>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <FadeIn delay={0.2}>
-                <h3 className="text-xs tracking-[0.2em] text-[#6e6e73] uppercase mb-6">
-                  提供メニュー
-                </h3>
-                <div className="space-y-4">
-                  {s.menu.map((m) => (
-                    <div key={m.item} className="border-b border-[#d2d2d7] pb-4">
-                      <p className="text-sm font-bold text-[#1d1d1f] mb-1">{m.item}</p>
-                      <p className="text-xs text-[#6e6e73]">{m.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </FadeIn>
+      {/* コーチング */}
+      <section id="coaching" className="scroll-mt-20 py-16 md:py-24 px-5 md:px-10">
+        <div className="max-w-6xl mx-auto">
+          <p className="eyebrow">COACHING</p>
+          <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">コーチング</h2>
+          <p className="mt-4 text-[15px] leading-[1.9] text-[#6e6e73]">
+            国際コーチング連盟（ICF）認定コーチが、一対一の対話を通じて考えの整理と行動を支えます。<br className="hidden md:inline" />回数や期間は、ご相談のうえ決めます。
+          </p>
+          <div className="mt-10 grid md:grid-cols-3 gap-5">
+            {coaching.map((c) => (
+              <div key={c.title} className="border border-[#e5e5ea] rounded-[20px] p-7">
+                <h3 className="text-[18px] font-semibold">{c.title}</h3>
+                <p className="mt-3 text-[14.5px] leading-[1.8] text-[#6e6e73]">{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 進め方 */}
+      <section className="bg-surface py-16 md:py-24 px-5 md:px-10">
+        <div className="max-w-6xl mx-auto">
+          <p className="eyebrow">OUR APPROACH</p>
+          <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">学びを行動に変える研修</h2>
+          <div className="mt-10 grid md:grid-cols-3 gap-10">
+            {approach.map((a) => (
+              <div key={a.n}>
+                <p className="text-sm font-semibold text-accent">{a.n}</p>
+                <h3 className="mt-2 text-[19px] font-semibold">{a.title}</h3>
+                <p className="mt-2 text-[15px] leading-[1.8] text-[#6e6e73]">{a.body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-20">
+            <p className="eyebrow">FLOW</p>
+            <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">ご相談から実施まで</h2>
+            <div className="mt-10">
+              <FlowLine items={flow} highlight={0} />
             </div>
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
 
-      {/* Process */}
-      <ProcessSteps />
-
-      {/* CTA */}
-      <section className="py-20 px-6 bg-[#1d1d1f] text-center">
-        <FadeIn>
-          <p className="text-sm text-[#6e6e73] mb-6 leading-relaxed">
-            まずは課題を話してみましょう。<br />
-            ご支援内容・料金はご状況に応じてご提案します。
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block border border-white text-white rounded-full px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#1d1d1f] transition-colors"
-          >
-            初回相談を予約する（無料）
-          </Link>
-        </FadeIn>
+      <section className="bg-[#1d1d1f] text-white text-center py-20 px-5 md:px-10">
+        <h2 className="text-[22px] md:text-[30px] font-semibold leading-[1.5]">{CTA.heading}</h2>
+        <p className="mt-3 text-[15px] text-[#c7c7cc]">{CTA.note}</p>
+        <Link href={CTA.href} className="btn-primary mt-8">
+          {CTA.label}
+        </Link>
       </section>
     </>
   );

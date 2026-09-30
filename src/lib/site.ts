@@ -7,8 +7,9 @@
 // www.wapple.co.jp → wapple.co.jp へリダイレクトさせること（現状は逆）。
 export const SITE_URL = "https://wapple.co.jp";
 export const SITE_NAME = "株式会社Wapple";
+export const SITE_TAGLINE = "学びと経験で人の可能性をひらく";
 export const SITE_DESCRIPTION =
-  "株式会社Wappleは、事業戦略コンサルティング・企業研修・コーチングを通じて、企業の成長と組織変革を伴走型で支援します。";
+  "株式会社Wappleは人材開発の会社です。研修・ワークショップ・コーチングで一人の気づきを行動の変化につなげます。AI時代のクリティカルシンキングやセルフマネジメント、1on1・フィードバック研修などを提供しています。";
 
 // 組織の基本情報（schema.org / フッター等で共有）
 export const ORG = {
@@ -28,12 +29,13 @@ export const ORG = {
   },
   areaServed: "JP",
   knowsAbout: [
-    "事業戦略コンサルティング",
-    "市場調査",
-    "新規事業開発",
-    "組織開発",
     "人材開発",
     "企業研修",
+    "クリティカルシンキング",
+    "セルフマネジメント",
+    "1on1",
+    "フィードバック",
+    "生成AI活用",
     "ビジネスコーチング",
   ],
 } as const;
@@ -44,12 +46,12 @@ export const PERSON = {
   nameCompact: "秦善成",
   furigana: "はた よしなり",
   nameEn: "Yoshinari Hata",
-  jobTitle: "代表取締役",
+  jobTitle: "代表取締役／人材開発コンサルタント・研修トレーナー",
   id: `${SITE_URL}/profile#person`,
   url: `${SITE_URL}/profile`,
   image: `${SITE_URL}/profile.png`,
   description:
-    "株式会社Wapple代表取締役。三菱UFJリサーチ＆コンサルティングで市場調査・事業戦略立案・新規事業検討を担当。その後Apple Japanにてデータ分析・業務改善・人材育成・研修設計に従事。2026年に株式会社Wappleを設立し、コンサルティング・企業研修・コーチングを提供。ICF認定コーチ（ACC）。",
+    "株式会社Wapple代表取締役。人材開発コンサルタント・研修トレーナー・ICF認定コーチ（ACC）。三菱UFJリサーチ＆コンサルティングで戦略コンサルタントとして50件超のプロジェクトに参画。Apple Japanではオンラインストア・カスタマーサポート部門でデータ分析と業務改善に携わるとともに、トレーナーとして研修の企画・実施を担当。2026年に株式会社Wappleを設立。",
   // 同一人物のWeb上の別拠点（検索エンジンのエンティティ統合シグナル）
   sameAs: ["https://www.wapple.life"],
   credentials: [
@@ -93,7 +95,7 @@ export const organizationJsonLd = {
   image: ORG.logo,
   email: ORG.email,
   description:
-    "事業戦略コンサルティング・企業研修・ビジネスコーチングを通じて、企業の課題解決から行動変容までを一貫して支援。",
+    "人材開発の会社。研修・ワークショップ・コーチングで一人の気づきを行動の変化につなげる。",
   foundingDate: ORG.foundingDate,
   founder: { "@type": "Person", "@id": `${SITE_URL}/profile#person`, name: ORG.founderName },
   address: {

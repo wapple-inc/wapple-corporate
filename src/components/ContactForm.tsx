@@ -2,10 +2,9 @@
 import { useState } from "react";
 
 const serviceOptions = [
-  "事業戦略コンサルティング",
-  "企業研修・人材開発",
-  "コーチング",
-  "その他・複合的なご相談",
+  "研修・ワークショップのご相談",
+  "コーチングのご相談",
+  "その他のお問い合わせ",
 ];
 
 export default function ContactForm() {
@@ -53,7 +52,7 @@ export default function ContactForm() {
           type="text"
           name="company"
           placeholder="株式会社〇〇"
-          className="w-full border border-[#d2d2d7] px-4 py-3 text-sm text-[#1d1d1f] placeholder-[#c0c0c0] focus:outline-none focus:border-[#1d1d1f] transition-colors"
+          className="w-full border border-[#d2d2d7] rounded-xl px-4 py-3 text-sm text-[#1d1d1f] placeholder-[#c0c0c0] focus:outline-none focus:border-accent transition-colors"
         />
       </div>
 
@@ -66,7 +65,7 @@ export default function ContactForm() {
           name="name"
           required
           placeholder="山田 太郎"
-          className="w-full border border-[#d2d2d7] px-4 py-3 text-sm text-[#1d1d1f] placeholder-[#c0c0c0] focus:outline-none focus:border-[#1d1d1f] transition-colors"
+          className="w-full border border-[#d2d2d7] rounded-xl px-4 py-3 text-sm text-[#1d1d1f] placeholder-[#c0c0c0] focus:outline-none focus:border-accent transition-colors"
         />
       </div>
 
@@ -79,19 +78,19 @@ export default function ContactForm() {
           name="email"
           required
           placeholder="your@email.com"
-          className="w-full border border-[#d2d2d7] px-4 py-3 text-sm text-[#1d1d1f] placeholder-[#c0c0c0] focus:outline-none focus:border-[#1d1d1f] transition-colors"
+          className="w-full border border-[#d2d2d7] rounded-xl px-4 py-3 text-sm text-[#1d1d1f] placeholder-[#c0c0c0] focus:outline-none focus:border-accent transition-colors"
         />
       </div>
 
       <div>
         <label className="block text-xs tracking-[0.2em] text-[#6e6e73] uppercase mb-2">
-          ご関心のあるサービス
+          ご用件
         </label>
         <select
           name="service"
-          className="w-full border border-[#d2d2d7] px-4 py-3 text-sm text-[#1d1d1f] bg-white focus:outline-none focus:border-[#1d1d1f] transition-colors"
+          defaultValue={serviceOptions[0]}
+          className="w-full border border-[#d2d2d7] rounded-xl px-4 py-3 text-sm text-[#1d1d1f] bg-white focus:outline-none focus:border-accent transition-colors"
         >
-          <option value="">選択してください</option>
           {serviceOptions.map((opt) => (
             <option key={opt} value={opt}>{opt}</option>
           ))}
@@ -106,15 +105,15 @@ export default function ContactForm() {
           name="message"
           required
           rows={5}
-          placeholder="課題の概要・ご状況・ご質問などをお気軽にご記入ください"
-          className="w-full border border-[#d2d2d7] px-4 py-3 text-sm text-[#1d1d1f] placeholder-[#c0c0c0] focus:outline-none focus:border-[#1d1d1f] transition-colors resize-none"
+          placeholder="対象の方や人数、ご希望の時期、気になっている課題など、わかる範囲でご記入ください"
+          className="w-full border border-[#d2d2d7] rounded-xl px-4 py-3 text-sm text-[#1d1d1f] placeholder-[#c0c0c0] focus:outline-none focus:border-accent transition-colors resize-none"
         />
       </div>
 
       <button
         type="submit"
         disabled={status === "sending"}
-        className="w-full bg-[#1d1d1f] text-white py-4 text-sm tracking-widest hover:bg-[#424245] transition-colors disabled:opacity-50"
+        className="w-full bg-accent text-white py-4 rounded-full text-sm font-semibold tracking-wider hover:bg-accent-dark transition-colors disabled:opacity-50"
       >
         {status === "sending" ? "送信中..." : "送信する"}
       </button>

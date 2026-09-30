@@ -4,90 +4,50 @@ import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL, PERSON, personJsonLd, breadcrumbJsonLd } from "@/lib/site";
+import { CTA } from "@/lib/programs";
 
-// 「秦善成」での指名検索の受け皿となるページ。タイトル・h1・構造化データを氏名に最適化する。
 export const metadata: Metadata = {
-  title: "代表取締役 秦善成（はた よしなり）プロフィール",
+  title: "代表プロフィール｜秦 善成",
   description:
-    "株式会社Wapple代表取締役・秦善成（Yoshinari Hata）のプロフィール。三菱UFJリサーチ＆コンサルティング、Apple Japanを経て、2026年に株式会社Wappleを設立。事業戦略コンサルティング・企業研修・コーチングを提供。ICF認定コーチ（ACC）。",
+    "株式会社Wapple代表 秦善成（はた よしなり）のプロフィール。人材開発コンサルタント・研修トレーナー・ICF認定コーチ（ACC）。戦略コンサルタントとApple Japanでの研修の企画・実施を経て、2026年にWappleを設立。",
   alternates: { canonical: "/profile" },
   openGraph: {
-    title: "代表取締役 秦善成（はた よしなり）プロフィール | 株式会社Wapple",
-    description:
-      "秦善成（Yoshinari Hata）— 戦略コンサルティング×人材開発×コーチング。三菱UFJリサーチ＆コンサルティング、Apple Japanを経て株式会社Wappleを設立。",
+    title: "代表プロフィール｜秦 善成｜株式会社Wapple",
     url: `${SITE_URL}/profile`,
-    type: "profile",
-    images: [{ url: "/profile.png", width: 800, height: 1067, alt: "秦 善成" }],
+    images: [{ url: "/profile.png" }],
   },
 };
 
-const profilePageJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  "@id": `${SITE_URL}/profile#page`,
-  url: `${SITE_URL}/profile`,
-  name: "代表取締役 秦善成（はた よしなり）プロフィール",
-  inLanguage: "ja",
-  mainEntity: { "@id": PERSON.id },
-};
+const career = [
+  { year: "2013", body: "早稲田大学政治経済学部経済学科を卒業（在学中に北京大学へ留学）" },
+  { year: "2014", body: "三菱UFJリサーチ＆コンサルティングに入社。戦略コンサルタントとして市場調査や事業戦略の立案に携わり、50件超のプロジェクトに参画" },
+  { year: "2020", body: "Apple Japanに入社。オンラインストア・カスタマーサポート部門でデータ分析と業務改善に携わる。トレーナーとして研修の企画・実施と効果測定、新メンバーの育成を担当" },
+  { year: "2025", body: "独立。企業研修の企画・登壇、ビジネスコーチング、専門学校での経営戦略の講義を開始" },
+  { year: "2026", body: "株式会社Wappleを設立し、代表取締役に就任" },
+];
 
-// 年次は記載しない（経歴の流れが伝われば十分なため）。社名＋何をしてきたか、のみ。
-const career: { org: string; detail?: string }[] = [
+const style = [
   {
-    org: "早稲田大学 政治経済学部 経済学科 卒業",
+    title: "受講者が自ら考える時間を大切にする",
+    body: "講師が一方的に話す時間はできるだけ短くし、受講者が自ら考え、周りと意見を交わす時間を多くとるようにしています。",
   },
   {
-    org: "三菱UFJリサーチ＆コンサルティング",
-    detail:
-      "小売・流通・消費財業界を中心に、海外展開・新規事業の市場調査、事業戦略立案、ビジネスデューデリジェンスに従事。",
+    title: "要点を整理して分かりやすく伝える",
+    body: "戦略コンサルタントとして培った論点を整理する力を生かし、複雑な内容も要点を明確にしてお伝えします。",
   },
   {
-    org: "Apple Japan",
-    detail:
-      "オンラインストアの不正取引対策におけるデータ分析と、新入社員・中途社員向け研修の設計・実施を担当。顧客の声をもとにしたサービス品質の改善にも携わる。",
+    title: "安心して発言できる雰囲気をつくる",
+    body: "落語やスピーチで培った話し方を生かし、受講者が肩の力を抜いて参加できる場づくりを心がけています。",
   },
   {
-    org: "株式会社Wapple",
-    detail:
-      "独立を経て設立。事業戦略コンサルティング・企業研修・コーチングを通じて、課題の構造化から行動変容までを伴走型で支援している。",
+    title: "研修後の行動の変化までを見据える",
+    body: "学んだことが職場での行動につながるよう、事前のヒアリングから研修後の振り返りまでを一貫して設計します。",
   },
 ];
 
-const expertise = [
-  {
-    title: "事業戦略・市場調査",
-    detail:
-      "市場調査・競合分析・論点整理・意思決定支援。中国・ASEAN・中東・欧米など海外市場の調査経験が豊富。",
-  },
-  {
-    title: "人材開発・企業研修",
-    detail:
-      "対話・内省・実践を重視した研修設計と講師登壇。ロジカルシンキング、コミュニケーション、生成AI活用など。",
-  },
-  {
-    title: "コーチング",
-    detail:
-      "ICF認定コーチ（ACC）として経営者・管理職・会社員へのコーチングを提供。マインドフルネスを取り入れた関わりが特徴。",
-  },
-];
-
-const companyInfo = [
-  { label: "会社名（商号）", value: "株式会社Wapple" },
-  { label: "代表者名", value: "秦 善成" },
-  { label: "事業内容", value: "事業戦略コンサルティング／企業研修・人材開発／ビジネスコーチング" },
-  { label: "所在地", value: "東京都目黒区下目黒１丁目１番１４号 コノトラビル７F" },
-  { label: "設立日", value: "2026年4月24日" },
-];
-
-const publications = [
-  {
-    title: "『中国小売業界で起きる地殻変動』（前編・後編）",
-    detail: "三菱UFJリサーチ＆コンサルティング レポート（2019年）",
-  },
-  {
-    title: "『日本はこうなる』シリーズ（2015〜2019年版）",
-    detail: "東洋経済新報社 — 記事執筆",
-  },
+const credentials = [
+  "国際コーチング連盟（ICF）認定コーチ ACC",
+  "一般社団法人マインドフルネス瞑想協会 認定講師",
 ];
 
 export default function ProfilePage() {
@@ -98,203 +58,79 @@ export default function ProfilePage() {
 
   return (
     <>
-      <JsonLd data={[personJsonLd, profilePageJsonLd, breadcrumb]} />
+      <JsonLd data={[personJsonLd, breadcrumb]} />
 
-      {/* Hero */}
-      <section className="pt-32 pb-16 px-6 border-b border-[#d2d2d7]">
-        <div className="max-w-6xl mx-auto">
+      <section className="pt-36 pb-16 md:pt-44 md:pb-24 px-5 md:px-10">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-[400px_1fr] gap-10 md:gap-18 items-center">
           <FadeIn>
-            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Profile</p>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-[#1d1d1f] leading-tight">
-              秦 善成
-            </h1>
-            <p className="text-sm text-[#6e6e73] mt-4 tracking-wider">
-              はた よしなり / Yoshinari Hata — 株式会社Wapple 代表取締役
+            <Image src="/profile.png" alt="秦 善成" width={1303} height={1207} priority className="w-full rounded-3xl object-cover aspect-[4/4.4]" />
+          </FadeIn>
+          <FadeIn delay={0.15}>
+            <p className="eyebrow">PROFILE</p>
+            <p className="mt-3 text-[15px] text-[#6e6e73]">人材開発コンサルタント／研修トレーナー／ICF認定コーチ</p>
+            <h1 className="mt-1 text-[34px] md:text-[44px] font-semibold">{PERSON.name}</h1>
+            <p className="text-[14px] text-[#6e6e73]">{PERSON.furigana}｜株式会社Wapple 代表取締役</p>
+            <p className="mt-6 text-[16px] leading-[2]">
+              研修で何より大切にしているのは、受講者一人ひとりが自ら気づく瞬間です。その気づきが行動を変え、周囲との関わりを変えていきます。その最初の一滴となる学びの場を、企業の皆さまとともにつくります。
             </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Summary */}
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-          <FadeIn>
-            <div className="aspect-[3/4] bg-[#f5f5f7] relative overflow-hidden rounded-2xl mb-6">
-              <Image
-                src="/profile.png"
-                alt="秦 善成（株式会社Wapple 代表取締役）"
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover"
-                priority
-              />
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.1} className="md:col-span-2">
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1d1d1f] mb-8 leading-snug">
-              戦略の視点と、人の行動変容への視点。
-              <br />
-              その両方から企業と個人に伴走する。
-            </h2>
-            <p className="text-sm text-[#6e6e73] leading-relaxed mb-4">
-              三菱UFJリサーチ＆コンサルティングにて市場調査・事業戦略立案・新規事業検討に携わる。その後、Apple
-              Japanにてデータ分析・業務改善・研修設計・人材育成に従事。
-            </p>
-            <p className="text-sm text-[#6e6e73] leading-relaxed">
-              2026年、株式会社Wappleを設立。事業や組織の課題を構造的に整理する視点と、一人ひとりの成長・行動変容を支援する視点の双方を活かし、コンサルティング・企業研修・コーチングを提供している。国際コーチング連盟（ICF）認定コーチ（ACC）。
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* About Wapple — 社名の由来と考え方 */}
-      <section className="py-24 px-6 bg-[#f5f5f7]">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn>
-            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">About Wapple</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-12 leading-tight">
-              点と点をつなぎ、<br className="md:hidden" />変化の波紋を広げる。
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <div className="max-w-2xl">
-              <p className="text-sm text-[#6e6e73] leading-relaxed mb-6">
-                Wappleという名前は、Water Ripple——水の波紋に由来します。
-              </p>
-              <p className="text-sm text-[#6e6e73] leading-relaxed mb-6">
-                組織の課題や可能性は、ばらばらの点のように見えて、実はつながっています。
-                戦略、人材、現場の行動、組織の文化。
-                点と点をつなぎ、構造として捉えることで、はじめて本質的な打ち手が見えてきます。
-              </p>
-              <p className="text-sm text-[#6e6e73] leading-relaxed mb-6">
-                そして、変化は大きな掛け声からは生まれません。
-                一人ひとりの小さな気づきと行動の変化が、水面の波紋のように、周囲へ、組織全体へと広がっていく。
-                Wappleは、コンサルティング・企業研修・コーチングを通じて、その持続的な変化が生まれる土台づくりを支援します。
-              </p>
-              <p className="text-xs text-[#6e6e73]">
-                このサイトの背景で点と点が結ばれていくのは、この考え方を表したものです。
-              </p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Career */}
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn>
-            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Career</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-16">経歴</h2>
-          </FadeIn>
-          <div className="max-w-3xl">
-            {career.map((c, i) => (
-              <FadeIn key={c.org} delay={i * 0.05}>
-                <div className="py-6 border-t border-[#d2d2d7] last:border-b">
-                  <p className={`text-base font-semibold text-[#1d1d1f] ${c.detail ? "mb-2" : ""}`}>{c.org}</p>
-                  {c.detail && (
-                    <p className="text-sm text-[#6e6e73] leading-relaxed">{c.detail}</p>
-                  )}
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Expertise */}
-      <section className="py-24 px-6 bg-[#f5f5f7]">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn>
-            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Expertise</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-16">専門領域</h2>
-          </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[#d2d2d7] rounded-2xl overflow-hidden">
-            {expertise.map((e, i) => (
-              <FadeIn key={e.title} delay={i * 0.1}>
-                <div className="p-10 border-b md:border-b-0 md:border-r border-[#d2d2d7] last:border-0 h-full">
-                  <h3 className="font-display text-lg font-bold text-[#1d1d1f] mb-4">{e.title}</h3>
-                  <p className="text-sm text-[#6e6e73] leading-relaxed">{e.detail}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Credentials & Publications */}
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-          <FadeIn>
-            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Credentials</p>
-            <h2 className="font-display text-2xl font-bold text-[#1d1d1f] mb-8">資格・認定</h2>
-            <ul className="space-y-3">
-              {PERSON.credentials.map((c) => (
-                <li key={c} className="flex items-start gap-3 text-sm text-[#6e6e73]">
-                  <span className="mt-2 w-1 h-1 bg-[#1d1d1f] rounded-full flex-shrink-0" />
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              {credentials.map((c) => (
+                <span key={c} className="text-[13px] border border-[#d2d2d7] rounded-full px-3.5 py-1.5">
                   {c}
-                </li>
+                </span>
               ))}
-            </ul>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Publications</p>
-            <h2 className="font-display text-2xl font-bold text-[#1d1d1f] mb-8">執筆</h2>
-            <ul className="space-y-6">
-              {publications.map((p) => (
-                <li key={p.title}>
-                  <p className="text-sm text-[#1d1d1f] font-semibold mb-1">{p.title}</p>
-                  <p className="text-sm text-[#6e6e73]">{p.detail}</p>
-                </li>
-              ))}
-            </ul>
+            </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* Company Info */}
-      <section className="py-24 px-6 bg-[#f5f5f7]">
+      <section className="bg-surface py-16 md:py-24 px-5 md:px-10">
         <div className="max-w-6xl mx-auto">
-          <FadeIn>
-            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Company</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-16">企業概要</h2>
-          </FadeIn>
-          <div className="max-w-3xl">
-            {companyInfo.map((item, i) => (
-              <FadeIn key={item.label} delay={i * 0.05}>
-                <div className="flex gap-6 py-5 border-t border-[#d2d2d7] last:border-b">
-                  <p className="text-xs tracking-wider text-[#6e6e73] w-36 flex-shrink-0 pt-0.5">{item.label}</p>
-                  <p className="text-sm text-[#1d1d1f]">{item.value}</p>
-                </div>
+          <p className="eyebrow">STYLE</p>
+          <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">講師として心がけていること</h2>
+          <div className="mt-10 grid md:grid-cols-2 gap-x-12 gap-y-10">
+            {style.map((s) => (
+              <FadeIn key={s.title}>
+                <h3 className="text-[19px] font-semibold">{s.title}</h3>
+                <p className="mt-2 text-[15px] leading-[1.9] text-[#6e6e73]">{s.body}</p>
               </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-6 text-center">
-        <FadeIn>
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1d1d1f] mb-6">
-            まずは、課題の整理からご一緒します。
-          </h2>
-          <p className="text-sm text-[#6e6e73] mb-10 max-w-md mx-auto leading-relaxed">
-            コンサルティング・研修・コーチングのご相談は、お気軽にお問い合わせください。
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/services"
-              className="border border-[#1d1d1f] rounded-full px-8 py-3 text-sm tracking-wider hover:bg-[#1d1d1f] hover:text-white transition-colors"
-            >
-              サービスを見る
-            </Link>
-            <Link
-              href="/contact"
-              className="bg-[#1d1d1f] text-white rounded-full px-8 py-3 text-sm tracking-wider hover:bg-[#424245] transition-colors"
-            >
-              初回相談を予約する（無料）
-            </Link>
+      <section className="py-16 md:py-24 px-5 md:px-10">
+        <div className="max-w-6xl mx-auto">
+          <p className="eyebrow">CAREER</p>
+          <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">経歴</h2>
+          <div className="mt-10 relative max-w-[820px]">
+          <div className="absolute left-[11px] top-2 bottom-2 w-px bg-[#d2d2d7]" />
+          <ol className="relative pl-10">
+            {career.map((c, i) => (
+              <li key={c.year} className="relative pb-10 last:pb-0">
+                <span className="absolute -left-10 top-0 w-[23px] h-[23px] flex items-center justify-center">
+                  {i === career.length - 1 ? (
+                    <span className="block w-[23px] h-[23px] rounded-full bg-accent" />
+                  ) : (
+                    <span className="block w-[11px] h-[11px] rounded-full bg-[#a1a1a6]" />
+                  )}
+                </span>
+                <p className="text-[15px] font-semibold text-accent-dark">{c.year}</p>
+                <p className="mt-1 text-[15.5px] leading-[1.9]">{c.body}</p>
+              </li>
+            ))}
+          </ol>
           </div>
-        </FadeIn>
+        </div>
+      </section>
+
+      <section className="bg-[#1d1d1f] text-white text-center py-20 px-5 md:px-10">
+        <h2 className="text-[22px] md:text-[30px] font-semibold leading-[1.5]">{CTA.heading}</h2>
+        <p className="mt-3 text-[15px] text-[#c7c7cc]">{CTA.note}</p>
+        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+          <Link href={CTA.href} className="btn-primary">{CTA.label}</Link>
+          <Link href="/services" className="btn-ghost">サービスを見る</Link>
+        </div>
       </section>
     </>
   );
