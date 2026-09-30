@@ -81,9 +81,8 @@ export default function ProfilePage() {
           <div>
             <HeroFade>
               <p className="text-[12px] font-semibold tracking-[0.16em] text-accent">PROFILE</p>
-              <p className="mt-6 text-[15px] text-[#6e6e73]">人材開発コンサルタント／研修トレーナー／ICF認定コーチ</p>
             </HeroFade>
-            <HeroLines delay={0.15} className="mt-3 t-h1" lines={[PERSON.name]} />
+            <HeroLines delay={0.15} className="mt-6 t-h1" lines={[PERSON.name]} />
             <HeroFade delay={0.3}>
               <p className="mt-3 text-[14px] text-[#6e6e73]">{PERSON.furigana}｜株式会社Wapple 代表取締役</p>
               <p className="mt-10 text-[20px] md:text-[24px] font-semibold leading-[1.75] tracking-[-0.01em]">
