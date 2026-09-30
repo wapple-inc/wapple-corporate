@@ -51,7 +51,7 @@ export const PERSON = {
   url: `${SITE_URL}/profile`,
   image: `${SITE_URL}/profile.png`,
   description:
-    "株式会社Wapple代表取締役。人材開発コンサルタント・研修トレーナー・ICF認定コーチ（ACC）。三菱UFJリサーチ＆コンサルティングで戦略コンサルタントとして50件超のプロジェクトに参画。Apple Japanではオンラインストア・カスタマーサポート部門でデータ分析と業務改善に携わるとともに、トレーナーとして研修の企画・実施を担当。2026年に株式会社Wappleを設立。",
+    "株式会社Wapple代表取締役。人材開発コンサルタント・研修トレーナー・ICF認定コーチ（ACC）。三菱UFJリサーチ＆コンサルティングで戦略コンサルタントとして50件を超えるプロジェクトに携わり、Apple Japanではデータ分析と業務改善を担いながらトレーナーとして研修の企画・実施に取り組んだ。2026年に株式会社Wappleを設立。",
   // 同一人物のWeb上の別拠点（検索エンジンのエンティティ統合シグナル）
   sameAs: ["https://www.wapple.life"],
   credentials: [

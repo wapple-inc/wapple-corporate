@@ -1,16 +1,17 @@
 import Link from "next/link";
-import { LogoMark } from "@/components/Logo";
+import Logo from "@/components/Logo";
 import { SITE_TAGLINE } from "@/lib/site";
 import { NAV_ITEMS, NAV_CTA } from "@/lib/nav";
 
-const links = [...NAV_ITEMS, NAV_CTA];
+const links = [...NAV_ITEMS, { label: "会社概要", href: "/profile#company" }, NAV_CTA];
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-white px-5 md:px-10 pt-20 md:pt-28">
-      <div className="max-w-[1280px] mx-auto grid md:grid-cols-[1.4fr_1fr] gap-12">
+    <footer className="relative overflow-hidden bg-white px-5 md:px-10 pt-16 md:pt-24">
+      <div className="max-w-[1280px] mx-auto grid md:grid-cols-[1.4fr_1fr] gap-12 pb-14 md:pb-20">
         <div>
-          <p className="text-[24px] md:text-[32px] font-semibold leading-[1.45] tracking-[-0.02em]">
+          <Logo />
+          <p className="mt-8 text-[22px] md:text-[26px] font-semibold leading-[1.5] tracking-[-0.02em]">
             学びと経験で
             <br />
             人の可能性をひらく
@@ -24,18 +25,6 @@ export default function Footer() {
             </Link>
           ))}
         </nav>
-      </div>
-
-      {/* 大きなロゴタイプ */}
-      <div className="relative max-w-[1280px] mx-auto mt-20 md:mt-28 pb-8 md:pb-12 select-none" aria-hidden="true">
-        <div className="flex items-center gap-[4vw] md:gap-10">
-          <span className="shrink-0 w-[17vw] md:w-[168px]">
-            <LogoMark size={168} className="block w-full h-auto" />
-          </span>
-          <span className="block text-[20vw] md:text-[208px] leading-[1.1] font-semibold tracking-[-0.055em] text-[#1d1d1f]">
-            Wapple
-          </span>
-        </div>
       </div>
 
       <div className="relative border-t border-[#e5e5ea] -mx-5 md:-mx-10 px-5 md:px-10">

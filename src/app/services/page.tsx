@@ -115,10 +115,10 @@ export default function ProgramsPage() {
                     </FadeIn>
                     <FadeIn delay={0.16}>
                       <p className="text-[12px] font-semibold tracking-[0.16em] text-[#6e6e73]">主な内容</p>
-                      <ol className="mt-5 border-t border-[#e5e5ea]">
+                      <ol className="mt-5 border-t border-[#e5e5ea] grid auto-rows-fr">
                         {p.contents.map((c, j) => (
-                          <li key={c} className="flex gap-4 py-3 border-b border-[#e5e5ea] text-[15px] leading-[1.7]">
-                            <span className="t-num text-accent font-semibold text-[12.5px] mt-[3px]">{String(j + 1).padStart(2, "0")}</span>
+                          <li key={c} className="flex items-center gap-4 py-3 border-b border-[#e5e5ea] text-[15px] leading-[1.7]">
+                            <span className="t-num text-accent font-semibold text-[12.5px] shrink-0">{String(j + 1).padStart(2, "0")}</span>
                             {c}
                           </li>
                         ))}
@@ -184,10 +184,10 @@ export default function ProgramsPage() {
               </p>
             </FadeIn>
           </div>
-          <div className="mt-14 md:mt-16 border-t border-[#1d1d1f]">
+          <div className="mt-14 md:mt-16 border-t border-[#1d1d1f] md:grid md:auto-rows-fr">
             {coaching.map((c, i) => (
-              <FadeIn key={c.title} delay={i * 0.06} y={14}>
-                <div className="grid md:grid-cols-[88px_1fr_1.2fr] gap-x-8 gap-y-3 py-9 border-b border-[#d2d2d7]">
+              <FadeIn key={c.title} delay={i * 0.06} y={14} className="h-full">
+                <div className="h-full grid md:grid-cols-[88px_1fr_1.2fr] gap-x-8 gap-y-3 md:items-center py-9 border-b border-[#d2d2d7]">
                   <p className="t-num text-[14px] text-accent font-semibold">{String(i + 1).padStart(2, "0")}</p>
                   <h3 className="text-[21px] md:text-[24px] font-semibold tracking-[-0.015em]">{c.title}</h3>
                   <p className="text-[15px] leading-[1.9] text-[#6e6e73]">{c.body}</p>

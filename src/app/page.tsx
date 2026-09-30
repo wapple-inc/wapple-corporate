@@ -198,7 +198,7 @@ export default function Home() {
               <p className="mt-8 text-[14px] text-[#6e6e73]">人材開発コンサルタント／研修トレーナー／ICF認定コーチ</p>
               <p className="mt-2 text-[40px] md:text-[56px] font-semibold tracking-[-0.03em] leading-tight">秦 善成</p>
               <p className="mt-7 text-[15.5px] md:text-[16.5px] leading-[2]">
-                三菱UFJリサーチ＆コンサルティングで戦略コンサルタントとして50件超のプロジェクトに参画。Apple Japanでは、オンラインストア・カスタマーサポート部門でデータ分析と業務改善に携わるとともに、トレーナーとして研修の企画・実施を担当しました。2026年に株式会社Wappleを設立しています。
+                三菱UFJリサーチ＆コンサルティングで戦略コンサルタントとして、50件を超えるプロジェクトに携わりました。その後Apple Japanで、オンラインストア・カスタマーサポート部門のデータ分析と業務改善を担いながら、トレーナーとして研修の企画・実施に取り組みました。2026年に株式会社Wappleを設立し、研修とコーチングを通じて人材開発に取り組んでいます。
               </p>
               <div className="mt-7 flex flex-wrap gap-2.5">
                 {["ICF認定コーチ（ACC）", "マインドフルネス瞑想協会 認定講師"].map((c) => (

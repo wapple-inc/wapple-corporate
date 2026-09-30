@@ -24,10 +24,18 @@ export const metadata: Metadata = {
 
 const career = [
   { year: "2013", body: "早稲田大学政治経済学部経済学科を卒業（在学中に北京大学へ留学）" },
-  { year: "2014", body: "三菱UFJリサーチ＆コンサルティングに入社。戦略コンサルタントとして市場調査や事業戦略の立案に携わり、50件超のプロジェクトに参画" },
-  { year: "2020", body: "Apple Japanに入社。オンラインストア・カスタマーサポート部門でデータ分析と業務改善に携わる。トレーナーとして研修の企画・実施と効果測定、新メンバーの育成を担当" },
-  { year: "2025", body: "独立。企業研修の企画・登壇、ビジネスコーチング、専門学校での経営戦略の講義を開始" },
+  { year: "2014", body: "三菱UFJリサーチ＆コンサルティングに入社し、戦略コンサルタントとして市場調査や事業戦略の立案など50件を超えるプロジェクトに参画" },
+  { year: "2020", body: "Apple Japanに入社し、オンラインストア・カスタマーサポート部門でデータ分析と業務改善を担当するとともに、トレーナーとして研修の企画・実施・効果測定と新メンバーの育成に従事" },
+  { year: "2025", body: "独立し、企業研修の企画・登壇、ビジネスコーチング、専門学校での経営戦略の講義を開始" },
   { year: "2026", body: "株式会社Wappleを設立し、代表取締役に就任" },
+];
+
+const companyInfo = [
+  { label: "会社名", value: "株式会社Wapple（Wapple Inc.）" },
+  { label: "代表者", value: "代表取締役 秦 善成" },
+  { label: "設立", value: "2026年4月24日" },
+  { label: "所在地", value: "〒153-0064 東京都目黒区下目黒1丁目1番14号 コノトラビル7F" },
+  { label: "事業内容", value: "企業研修・ワークショップの企画と実施／コーチング" },
 ];
 
 const style = [
@@ -118,18 +126,33 @@ export default function ProfilePage() {
         <div className="max-w-[1280px] mx-auto">
           <SectionLabel n="02" label="CAREER" />
           <LineReveal className="mt-8 t-h2" lines={["経歴"]} />
-          <ol className="mt-16 md:mt-20 border-t border-[#1d1d1f]">
+          <ol className="mt-16 md:mt-20 border-t border-[#1d1d1f] md:grid md:auto-rows-fr">
             {career.map((c, i) => (
               <li key={c.year}>
-                <FadeIn y={14} delay={i * 0.04}>
-                  <div className="grid grid-cols-[72px_1fr] md:grid-cols-[200px_1fr] gap-x-6 py-8 md:py-10 border-b border-[#d2d2d7]">
+                <FadeIn y={14} delay={i * 0.04} className="h-full">
+                  <div className="h-full grid grid-cols-[72px_1fr] md:grid-cols-[200px_1fr] gap-x-6 items-center py-8 md:py-9 border-b border-[#d2d2d7]">
                     <p className={`t-num text-[26px] md:text-[44px] font-semibold leading-none ${i === career.length - 1 ? "text-accent" : "text-[#1d1d1f]"}`}>{c.year}</p>
-                    <p className="text-[15.5px] md:text-[17px] leading-[1.9] md:pt-1">{c.body}</p>
+                    <p className="text-[15.5px] md:text-[17px] leading-[1.9]">{c.body}</p>
                   </div>
                 </FadeIn>
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section id="company" className="scroll-mt-20 bg-surface px-5 md:px-10 py-24 md:py-36">
+        <div className="max-w-[1280px] mx-auto">
+          <SectionLabel n="03" label="COMPANY" />
+          <LineReveal className="mt-8 t-h2" lines={["会社概要"]} />
+          <dl className="mt-16 md:mt-20 border-t border-[#1d1d1f] md:grid md:auto-rows-fr">
+            {companyInfo.map((c) => (
+              <div key={c.label} className="grid grid-cols-[88px_1fr] md:grid-cols-[200px_1fr] gap-x-6 items-center min-h-[76px] md:min-h-[88px] py-5 border-b border-[#d2d2d7]">
+                <dt className="text-[13px] md:text-[14px] font-semibold text-[#6e6e73]">{c.label}</dt>
+                <dd className="text-[15.5px] md:text-[17px] leading-[1.8]">{c.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 

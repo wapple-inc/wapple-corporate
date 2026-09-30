@@ -48,7 +48,7 @@ export default function ContactPage() {
             <p className="mt-6 text-[15.5px] leading-[1.95] text-[#6e6e73]">
               研修やワークショップ、コーチングに関するご相談を承ります。講師のご依頼やその他のお問い合わせも、こちらのフォームからお送りください。
             </p>
-            <ol className="mt-12 border-t border-[#d2d2d7]">
+            <ol className="mt-12 border-t border-[#d2d2d7] md:grid md:auto-rows-fr">
               {points.map((t, i) => (
                 <li key={t.head} className="grid grid-cols-[40px_1fr] py-6 border-b border-[#e5e5ea]">
                   <span className="t-num text-[13px] text-accent font-semibold pt-0.5">{String(i + 1).padStart(2, "0")}</span>
