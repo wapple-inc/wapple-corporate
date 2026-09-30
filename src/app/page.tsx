@@ -197,9 +197,11 @@ export default function Home() {
             <FadeIn delay={0.1}>
               <p className="mt-8 text-[14px] text-[#6e6e73]">人材開発コンサルタント／研修トレーナー／ICF認定コーチ</p>
               <p className="mt-2 text-[40px] md:text-[56px] font-semibold tracking-[-0.03em] leading-tight">秦 善成</p>
-              <p className="mt-7 text-[15.5px] md:text-[16.5px] leading-[2]">
-                三菱UFJリサーチ＆コンサルティングで戦略コンサルタントとして、50件を超えるプロジェクトに携わりました。その後Apple Japanで、オンラインストア・カスタマーサポート部門のデータ分析と業務改善を担いながら、トレーナーとして研修の企画・実施に取り組みました。2026年に株式会社Wappleを設立し、研修とコーチングを通じて人材開発に取り組んでいます。
-              </p>
+              <div className="mt-7 space-y-3 text-[15.5px] md:text-[16.5px] leading-[1.95]">
+                <p>三菱UFJリサーチ＆コンサルティングで戦略コンサルタントとして、50件を超えるプロジェクトに携わりました。</p>
+                <p>その後、Apple Japanにて、オンラインストア・カスタマーサポート部門のデータ分析と業務改善を担いながら、トレーナーとして研修の企画・実施に取り組みました。</p>
+                <p>独立を経て、2026年に株式会社Wappleを設立しました。現在は研修とコーチングを通じて人材開発に取り組んでいます。</p>
+              </div>
               <div className="mt-7 flex flex-wrap gap-2.5">
                 {["ICF認定コーチ（ACC）", "マインドフルネス瞑想協会 認定講師"].map((c) => (
                   <span key={c} className="text-[13px] border border-[#d2d2d7] rounded-full px-3.5 py-1.5 bg-white">
