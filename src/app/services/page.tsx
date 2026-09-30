@@ -57,9 +57,12 @@ export default function ProgramsPage() {
       <JsonLd data={[serviceJsonLd, breadcrumb]} />
 
       <PageHero label="SERVICES" title={["サービス"]} sub="研修・ワークショップ・コーチング">
-        <div className="mt-12 md:mt-16 grid md:grid-cols-[1.3fr_1fr] gap-10 md:gap-16 items-end">
+        <div className="mt-12 md:mt-16 grid lg:grid-cols-[1.9fr_1fr] gap-10 lg:gap-14 items-end">
           <p className="t-lead text-[#6e6e73]">
-            生成AIの活用が広がるほど、人の判断力や対話の力が問われます。研修とワークショップは、企業や対象者の課題に合わせて設計します。時間や人数、対面・オンラインなどの条件も含めて、お気軽にご相談ください。
+            {/* 句点ごとに改行 */}
+            <span className="block">生成AIの活用が広がるほど、人の判断力や対話の力が問われます。</span>
+            <span className="block">研修とワークショップは、企業や対象者の課題に合わせて設計します。</span>
+            <span className="block">時間や人数、対面・オンラインなどの条件も含めて、お気軽にご相談ください。</span>
           </p>
           <nav aria-label="このページの目次" className="border-t border-[#d2d2d7]">
             {index.map((it, i) => (
