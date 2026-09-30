@@ -47,7 +47,7 @@ export default function PersonalPage() {
 
       {/* Page header */}
       <section className="pt-32 pb-16 px-6 border-b border-[#d2d2d7]">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-[1280px] mx-auto">
           <FadeIn>
             <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">For Individuals</p>
             <h1 className="font-display text-4xl md:text-6xl font-bold text-[#1d1d1f]">
@@ -63,7 +63,7 @@ export default function PersonalPage() {
 
       {/* Services grid */}
       <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#d2d2d7]">
+        <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#d2d2d7]">
           {services.map((s, i) => (
             <FadeIn key={s.title} delay={i * 0.1}>
               <div className="p-10 border-b border-[#d2d2d7] last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 md:odd:border-r min-h-[280px] flex flex-col">

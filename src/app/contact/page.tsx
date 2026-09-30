@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
+import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL, SITE_NAME, breadcrumbJsonLd } from "@/lib/site";
@@ -38,35 +39,32 @@ export default function ContactPage() {
   return (
     <>
       <JsonLd data={[contactJsonLd, breadcrumb]} />
-      <section className="pt-36 pb-14 md:pt-44 md:pb-16 px-5 md:px-10 border-b border-[#e5e5ea]">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn>
-            <p className="eyebrow">CONTACT</p>
-            <h1 className="mt-4 text-[34px] md:text-[52px] font-semibold">お問い合わせ・無料相談</h1>
-          </FadeIn>
-        </div>
-      </section>
+      <PageHero label="CONTACT" title={["お問い合わせ", "無料相談"]} />
 
-      <section className=" py-16 md:py-24 px-5 md:px-10">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 md:gap-16">
+      <section className="px-5 md:px-10 py-20 md:py-32">
+        <div className="max-w-[1280px] mx-auto grid md:grid-cols-[1fr_1.1fr] gap-16 md:gap-24">
           <FadeIn>
-            <h2 className="text-[24px] md:text-[30px] font-semibold leading-[1.5]">まずはお気軽にご相談ください</h2>
-            <p className="mt-5 text-[15px] leading-[1.9] text-[#6e6e73]">
-              研修やワークショップ、コーチングに関するご相談を承ります。<br className="hidden md:inline" />講師のご依頼やその他のお問い合わせも、こちらのフォームからお送りください。
+            <h2 className="t-h3 !text-[26px] md:!text-[34px] !leading-[1.5]">まずはお気軽に<br />ご相談ください</h2>
+            <p className="mt-6 text-[15.5px] leading-[1.95] text-[#6e6e73]">
+              研修やワークショップ、コーチングに関するご相談を承ります。講師のご依頼やその他のお問い合わせも、こちらのフォームからお送りください。
             </p>
-            <ul className="mt-9 space-y-6">
-              {points.map((t) => (
-                <li key={t.head} className="pl-5 relative">
-                  <span className="absolute left-0 top-[0.55em] w-2 h-2 rounded-full bg-accent" />
-                  <p className="text-[16px] font-semibold">{t.head}</p>
-                  <p className="mt-1 text-[14.5px] leading-[1.8] text-[#6e6e73]">{t.body}</p>
+            <ol className="mt-12 border-t border-[#d2d2d7]">
+              {points.map((t, i) => (
+                <li key={t.head} className="grid grid-cols-[40px_1fr] py-6 border-b border-[#e5e5ea]">
+                  <span className="t-num text-[13px] text-accent font-semibold pt-0.5">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <p className="text-[17px] font-semibold">{t.head}</p>
+                    <p className="mt-1.5 text-[14.5px] leading-[1.85] text-[#6e6e73]">{t.body}</p>
+                  </div>
                 </li>
               ))}
-            </ul>
-            <p className="mt-9 text-[13px] text-[#6e6e73]">2営業日以内にご連絡します。</p>
+            </ol>
+            <p className="mt-8 text-[13px] text-[#6e6e73]">2営業日以内にご連絡します。</p>
           </FadeIn>
           <FadeIn delay={0.15}>
-            <ContactForm />
+            <div className="bg-surface rounded-[28px] p-7 md:p-12">
+              <ContactForm />
+            </div>
           </FadeIn>
         </div>
       </section>

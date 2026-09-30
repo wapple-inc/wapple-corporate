@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import JsonLd from "@/components/JsonLd";
+import LineReveal from "@/components/LineReveal";
+import SectionLabel from "@/components/SectionLabel";
+import RippleCanvas from "@/components/RippleCanvas";
+import CtaBand from "@/components/CtaBand";
+import ImageReveal from "@/components/ImageReveal";
+import HeroLines, { HeroFade } from "@/components/HeroLines";
 import { SITE_URL, PERSON, personJsonLd, breadcrumbJsonLd } from "@/lib/site";
-import { CTA } from "@/lib/programs";
 
 export const metadata: Metadata = {
   title: "代表プロフィール｜秦 善成",
@@ -60,78 +64,76 @@ export default function ProfilePage() {
     <>
       <JsonLd data={[personJsonLd, breadcrumb]} />
 
-      <section className="pt-36 pb-16 md:pt-44 md:pb-24 px-5 md:px-10">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-[400px_1fr] gap-10 md:gap-18 items-center">
-          <FadeIn>
-            <Image src="/profile.png" alt="秦 善成" width={1303} height={1207} priority className="w-full rounded-3xl object-cover aspect-[4/4.4]" />
-          </FadeIn>
-          <FadeIn delay={0.15}>
-            <p className="eyebrow">PROFILE</p>
-            <p className="mt-3 text-[15px] text-[#6e6e73]">人材開発コンサルタント／研修トレーナー／ICF認定コーチ</p>
-            <h1 className="mt-1 text-[34px] md:text-[44px] font-semibold">{PERSON.name}</h1>
-            <p className="text-[14px] text-[#6e6e73]">{PERSON.furigana}｜株式会社Wapple 代表取締役</p>
-            <p className="mt-6 text-[16px] leading-[2]">
-              研修で何より大切にしているのは、受講者一人ひとりが自ら気づく瞬間です。その気づきが行動を変え、周囲との関わりを変えていきます。その最初の一滴となる学びの場を、企業の皆さまとともにつくります。
-            </p>
-            <div className="mt-6 flex flex-wrap gap-2.5">
-              {credentials.map((c) => (
-                <span key={c} className="text-[13px] border border-[#d2d2d7] rounded-full px-3.5 py-1.5">
-                  {c}
-                </span>
-              ))}
-            </div>
-          </FadeIn>
+      <section className="relative overflow-hidden px-5 md:px-10 pt-36 pb-24 md:pt-48 md:pb-36">
+        <RippleCanvas className="absolute inset-0 w-full h-full" focus={{ x: 0.3, y: 0.55 }} focusMobile={{ x: 0.5, y: 0.3 }} interval={5200} maxAlpha={0.35} />
+        <div className="relative max-w-[1280px] mx-auto grid md:grid-cols-[5fr_6fr] gap-12 md:gap-20 items-end">
+          <ImageReveal immediate className="rounded-[28px]">
+            <Image src="/profile.png" alt="秦 善成" width={1303} height={1207} priority className="w-full object-cover aspect-[4/4.6]" />
+          </ImageReveal>
+          <div>
+            <HeroFade>
+              <p className="text-[12px] font-semibold tracking-[0.16em] text-accent">PROFILE</p>
+              <p className="mt-6 text-[15px] text-[#6e6e73]">人材開発コンサルタント／研修トレーナー／ICF認定コーチ</p>
+            </HeroFade>
+            <HeroLines delay={0.15} className="mt-3 t-h1" lines={[PERSON.name]} />
+            <HeroFade delay={0.3}>
+              <p className="mt-3 text-[14px] text-[#6e6e73]">{PERSON.furigana}｜株式会社Wapple 代表取締役</p>
+              <p className="mt-10 text-[20px] md:text-[24px] font-semibold leading-[1.75] tracking-[-0.01em]">
+                研修で何より大切にしているのは、受講者一人ひとりが自ら気づく瞬間です。
+              </p>
+              <p className="mt-5 text-[16px] leading-[2] text-[#424245]">
+                その気づきが行動を変え、周囲との関わりを変えていきます。その最初の一滴となる学びの場を、企業の皆さまとともにつくります。
+              </p>
+              <div className="mt-8 flex flex-wrap gap-2.5">
+                {credentials.map((c) => (
+                  <span key={c} className="text-[13px] border border-[#d2d2d7] bg-white rounded-full px-3.5 py-1.5">
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </HeroFade>
+          </div>
         </div>
       </section>
 
-      <section className="bg-surface py-16 md:py-24 px-5 md:px-10">
-        <div className="max-w-6xl mx-auto">
-          <p className="eyebrow">STYLE</p>
-          <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">講師として心がけていること</h2>
-          <div className="mt-10 grid md:grid-cols-2 gap-x-12 gap-y-10">
-            {style.map((s) => (
-              <FadeIn key={s.title}>
-                <h3 className="text-[19px] font-semibold">{s.title}</h3>
-                <p className="mt-2 text-[15px] leading-[1.9] text-[#6e6e73]">{s.body}</p>
+      <section className="bg-surface px-5 md:px-10 py-24 md:py-36">
+        <div className="max-w-[1280px] mx-auto">
+          <SectionLabel n="01" label="STYLE" />
+          <LineReveal className="mt-8 t-h2" lines={["講師として", "心がけていること"]} />
+          <div className="mt-16 md:mt-20 grid md:grid-cols-2 gap-x-16 gap-y-4">
+            {style.map((s, i) => (
+              <FadeIn key={s.title} delay={(i % 2) * 0.08}>
+                <div className="border-t border-[#d2d2d7] pt-7 pb-8">
+                  <p className="t-num text-[13px] text-accent font-semibold">{String(i + 1).padStart(2, "0")}</p>
+                  <h3 className="mt-3 t-h3">{s.title}</h3>
+                  <p className="mt-3 text-[15px] leading-[1.95] text-[#6e6e73]">{s.body}</p>
+                </div>
               </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 px-5 md:px-10">
-        <div className="max-w-6xl mx-auto">
-          <p className="eyebrow">CAREER</p>
-          <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">経歴</h2>
-          <div className="mt-10 relative max-w-[820px]">
-          <div className="absolute left-[11px] top-2 bottom-2 w-px bg-[#d2d2d7]" />
-          <ol className="relative pl-10">
+      <section className="px-5 md:px-10 py-24 md:py-36">
+        <div className="max-w-[1280px] mx-auto">
+          <SectionLabel n="02" label="CAREER" />
+          <LineReveal className="mt-8 t-h2" lines={["経歴"]} />
+          <ol className="mt-16 md:mt-20 border-t border-[#1d1d1f]">
             {career.map((c, i) => (
-              <li key={c.year} className="relative pb-10 last:pb-0">
-                <span className="absolute -left-10 top-0 w-[23px] h-[23px] flex items-center justify-center">
-                  {i === career.length - 1 ? (
-                    <span className="block w-[23px] h-[23px] rounded-full bg-accent" />
-                  ) : (
-                    <span className="block w-[11px] h-[11px] rounded-full bg-[#a1a1a6]" />
-                  )}
-                </span>
-                <p className="text-[15px] font-semibold text-accent-dark">{c.year}</p>
-                <p className="mt-1 text-[15.5px] leading-[1.9]">{c.body}</p>
+              <li key={c.year}>
+                <FadeIn y={14} delay={i * 0.04}>
+                  <div className="grid grid-cols-[72px_1fr] md:grid-cols-[200px_1fr] gap-x-6 py-8 md:py-10 border-b border-[#d2d2d7]">
+                    <p className={`t-num text-[26px] md:text-[44px] font-semibold leading-none ${i === career.length - 1 ? "text-accent" : "text-[#1d1d1f]"}`}>{c.year}</p>
+                    <p className="text-[15.5px] md:text-[17px] leading-[1.9] md:pt-1">{c.body}</p>
+                  </div>
+                </FadeIn>
               </li>
             ))}
           </ol>
-          </div>
         </div>
       </section>
 
-      <section className="bg-[#1d1d1f] text-white text-center py-20 px-5 md:px-10">
-        <h2 className="text-[22px] md:text-[30px] font-semibold leading-[1.5]">{CTA.heading}</h2>
-        <p className="mt-3 text-[15px] text-[#c7c7cc]">{CTA.note}</p>
-        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
-          <Link href={CTA.href} className="btn-primary">{CTA.label}</Link>
-          <Link href="/services" className="btn-ghost">サービスを見る</Link>
-        </div>
-      </section>
+      <CtaBand secondary={{ label: "サービスを見る", href: "/services" }} />
     </>
   );
 }

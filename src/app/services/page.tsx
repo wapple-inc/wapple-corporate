@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import JsonLd from "@/components/JsonLd";
 import FlowLine from "@/components/FlowLine";
+import PageHero from "@/components/PageHero";
+import SectionLabel from "@/components/SectionLabel";
+import LineReveal from "@/components/LineReveal";
+import CountUp from "@/components/CountUp";
+import CtaBand from "@/components/CtaBand";
 import { SITE_URL, SITE_NAME, breadcrumbJsonLd } from "@/lib/site";
-import { focusPrograms, levelPrograms, approach, flow, evidence, coaching, CTA } from "@/lib/programs";
+import { focusPrograms, levelPrograms, approach, flow, evidence, coaching } from "@/lib/programs";
 
 export const metadata: Metadata = {
   title: "サービス",
@@ -41,152 +45,186 @@ export default function ProgramsPage() {
     { name: "サービス", path: "/services" },
   ]);
 
+  const index = [
+    { href: "#training", label: "重点の4研修" },
+    { href: "#level", label: "階層別研修" },
+    { href: "#coaching", label: "コーチング" },
+    { href: "#approach", label: "進め方" },
+  ];
+
   return (
     <>
       <JsonLd data={[serviceJsonLd, breadcrumb]} />
 
-      <section className="pt-36 pb-16 md:pt-44 md:pb-20 px-5 md:px-10 border-b border-[#e5e5ea]">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn>
-            <p className="eyebrow">SERVICES</p>
-            <h1 className="mt-4 text-[34px] md:text-[52px] font-semibold leading-[1.3]">サービス</h1>
-            <p className="mt-3 text-[17px] md:text-[20px] text-[#6e6e73]">研修・ワークショップ・コーチング</p>
-            <p className="mt-6 max-w-[720px] text-[15.5px] md:text-[17px] leading-[1.9] text-[#6e6e73]">
-              生成AIの活用が広がるほど、人の判断力や対話の力が問われます。<br className="hidden md:inline" />研修とワークショップは、対象者と課題に合わせて設計します。<br className="hidden md:inline" />時間や人数、対面・オンラインの形式はご相談ください。
-            </p>
-          </FadeIn>
+      <PageHero label="SERVICES" title={["サービス"]} sub="研修・ワークショップ・コーチング">
+        <div className="mt-12 md:mt-16 grid md:grid-cols-[1.3fr_1fr] gap-10 md:gap-16 items-end">
+          <p className="t-lead text-[#6e6e73]">
+            生成AIの活用が広がるほど、人の判断力や対話の力が問われます。研修とワークショップは、対象者と課題に合わせて設計します。時間や人数、対面・オンラインの形式はご相談ください。
+          </p>
+          <nav aria-label="このページの目次" className="border-t border-[#d2d2d7]">
+            {index.map((it, i) => (
+              <a key={it.href} href={it.href} className="group flex items-center justify-between py-3.5 border-b border-[#e5e5ea] text-[15px]">
+                <span className="flex items-baseline gap-4">
+                  <span className="t-num text-[12px] text-accent font-semibold">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="group-hover:text-accent-dark transition-colors">{it.label}</span>
+                </span>
+                <span className="arrow text-accent rotate-90" aria-hidden="true">→</span>
+              </a>
+            ))}
+          </nav>
         </div>
-      </section>
+      </PageHero>
 
-      {/* 重点の4研修 */}
-      <section id="training" className="scroll-mt-20 py-16 md:py-24 px-5 md:px-10">
-        <div className="max-w-6xl mx-auto">
-          <p className="eyebrow">TRAINING &amp; WORKSHOP</p>
-          <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">重点の4研修</h2>
-          <div className="mt-10 space-y-6">
-            {focusPrograms.map((p) => (
-              <FadeIn key={p.id}>
-                <article id={p.id} className="scroll-mt-24 border border-[#e5e5ea] rounded-[20px] p-7 md:p-10">
-                  <div className="md:flex md:items-baseline md:justify-between gap-6">
-                    <h3 className="text-[21px] md:text-[26px] font-semibold">{p.name}</h3>
-                    <p className="mt-2 md:mt-0 text-[13px] text-[#6e6e73] shrink-0">
-                      対象：{p.audience}｜時間：{p.duration}
-                    </p>
-                  </div>
-                  <p className="mt-3 text-[15.5px] leading-[1.8] text-[#3e5871]">{p.summary}</p>
-                  <div className="mt-7 grid md:grid-cols-2 gap-8">
-                    <div>
-                      <p className="text-[13px] font-semibold text-[#6e6e73]">到達目標</p>
-                      <ul className="mt-3 space-y-2.5">
+      {/* 01 重点の4研修 */}
+      <section id="training" className="scroll-mt-20 px-5 md:px-10 py-24 md:py-36">
+        <div className="max-w-[1280px] mx-auto">
+          <SectionLabel n="01" label="TRAINING & WORKSHOP" />
+          <LineReveal className="mt-8 t-h2" lines={["重点の4研修"]} />
+
+          <div className="mt-16 md:mt-20 border-t border-[#1d1d1f]">
+            {focusPrograms.map((p, i) => (
+              <article key={p.id} id={p.id} className="scroll-mt-24 grid md:grid-cols-[88px_1fr] gap-x-8 py-12 md:py-16 border-b border-[#d2d2d7]">
+                <FadeIn y={16}>
+                  <p className="t-num text-[40px] md:text-[48px] font-semibold leading-none text-accent/30">{String(i + 1).padStart(2, "0")}</p>
+                </FadeIn>
+                <div className="mt-5 md:mt-0">
+                  <FadeIn y={16}>
+                    <div className="md:flex md:items-baseline md:justify-between gap-8">
+                      <h3 className="text-[26px] md:text-[38px] font-semibold leading-[1.35] tracking-[-0.025em]">{p.name}</h3>
+                      <p className="mt-3 md:mt-0 shrink-0 flex gap-2 text-[12.5px]">
+                        <span className="rounded-full bg-accent-soft text-accent-dark px-3 py-1">{p.audience}</span>
+                        <span className="rounded-full bg-accent-soft text-accent-dark px-3 py-1">{p.duration}</span>
+                      </p>
+                    </div>
+                    <p className="mt-5 t-lead text-[#3e5871] max-w-[40em]">{p.summary}</p>
+                  </FadeIn>
+                  <div className="mt-10 grid md:grid-cols-2 gap-10 md:gap-14">
+                    <FadeIn delay={0.08}>
+                      <p className="text-[12px] font-semibold tracking-[0.16em] text-[#6e6e73]">到達目標</p>
+                      <ul className="mt-5 space-y-4">
                         {p.aims.map((a) => (
-                          <li key={a} className="text-[15px] leading-[1.7] pl-4 relative">
-                            <span className="absolute left-0 top-[0.7em] w-1.5 h-1.5 rounded-full bg-accent" />
+                          <li key={a} className="text-[15.5px] leading-[1.75] pl-6 relative">
+                            <svg className="absolute left-0 top-[0.45em]" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                              <circle cx="6" cy="6" r="5" fill="none" stroke="#4F6D8A" strokeWidth="1.2" />
+                              <circle cx="6" cy="6" r="1.8" fill="#4F6D8A" />
+                            </svg>
                             {a}
                           </li>
                         ))}
                       </ul>
-                    </div>
-                    <div>
-                      <p className="text-[13px] font-semibold text-[#6e6e73]">主な内容</p>
-                      <ol className="mt-3 space-y-2.5">
-                        {p.contents.map((c, i) => (
-                          <li key={c} className="text-[15px] leading-[1.7] flex gap-3">
-                            <span className="text-accent font-semibold text-[13px] mt-[3px]">{String(i + 1).padStart(2, "0")}</span>
+                    </FadeIn>
+                    <FadeIn delay={0.16}>
+                      <p className="text-[12px] font-semibold tracking-[0.16em] text-[#6e6e73]">主な内容</p>
+                      <ol className="mt-5 border-t border-[#e5e5ea]">
+                        {p.contents.map((c, j) => (
+                          <li key={c} className="flex gap-4 py-3 border-b border-[#e5e5ea] text-[15px] leading-[1.7]">
+                            <span className="t-num text-accent font-semibold text-[12.5px] mt-[3px]">{String(j + 1).padStart(2, "0")}</span>
                             {c}
                           </li>
                         ))}
                       </ol>
-                    </div>
+                    </FadeIn>
                   </div>
-                </article>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-20 md:mt-28 grid md:grid-cols-2 gap-14 md:gap-20">
+            {evidence.map((e, i) => (
+              <FadeIn key={e.num} delay={i * 0.1}>
+                <p className="text-[56px] md:text-[88px] font-semibold leading-none t-num">
+                  <CountUp text={e.num} />
+                </p>
+                <p className="mt-6 text-[15px] leading-[1.9] max-w-[30em]">{e.text}</p>
+                <a href={e.url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-[12px] text-[#6e6e73] link-line">
+                  出典：{e.source} ↗
+                </a>
               </FadeIn>
             ))}
           </div>
-          <div className="mt-12 grid md:grid-cols-2 gap-8">
-            {evidence.map((e) => (
-              <div key={e.num} className="border-t-2 border-[#1d1d1f] pt-5">
-                <p className="text-[32px] font-semibold leading-tight">{e.num}</p>
-                <p className="mt-2 text-[14.5px] leading-[1.8]">{e.text}</p>
-                <a href={e.url} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-[12px] text-[#6e6e73] underline underline-offset-2">
-                  {e.source}
-                </a>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* 階層別 */}
-      <section className="bg-surface py-16 md:py-24 px-5 md:px-10">
-        <div className="max-w-6xl mx-auto">
-          <p className="eyebrow">BY LEVEL</p>
-          <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">階層別研修</h2>
-          <p className="mt-4 text-[15px] text-[#6e6e73]">2〜4時間を基本とし、1日研修や複数回のシリーズにも対応します。</p>
-          <div className="mt-10 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-            {levelPrograms.map((l) => (
-              <div key={l.level} className="bg-white rounded-2xl p-6">
-                <h3 className="text-[15px] font-semibold">{l.level}</h3>
-                <ul className="mt-3 space-y-1.5">
+      {/* 02 階層別 */}
+      <section id="level" className="scroll-mt-20 bg-surface px-5 md:px-10 py-24 md:py-36">
+        <div className="max-w-[1280px] mx-auto">
+          <SectionLabel n="02" label="BY LEVEL" />
+          <div className="mt-8 grid md:grid-cols-[1.2fr_1fr] gap-6 md:gap-16 items-end">
+            <LineReveal className="t-h2" lines={["階層別研修"]} />
+            <FadeIn>
+              <p className="t-lead text-[#6e6e73]">2〜4時間を基本とし、1日研修や複数回のシリーズにも対応します。</p>
+            </FadeIn>
+          </div>
+          <div className="mt-14 md:mt-16 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {levelPrograms.map((l, i) => (
+              <FadeIn key={l.level} delay={i * 0.07} className="bg-white rounded-[22px] p-7">
+                <p className="t-num text-[12px] text-accent font-semibold">{String(i + 1).padStart(2, "0")}</p>
+                <h3 className="mt-2 text-[20px] font-semibold">{l.level}</h3>
+                <ul className="mt-5 space-y-2.5">
                   {l.themes.map((t) => (
-                    <li key={t} className="text-[14px] text-[#424245]">{t}</li>
+                    <li key={t} className="text-[14.5px] text-[#424245]">{t}</li>
                   ))}
                 </ul>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* コーチング */}
-      <section id="coaching" className="scroll-mt-20 py-16 md:py-24 px-5 md:px-10">
-        <div className="max-w-6xl mx-auto">
-          <p className="eyebrow">COACHING</p>
-          <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">コーチング</h2>
-          <p className="mt-4 text-[15px] leading-[1.9] text-[#6e6e73]">
-            国際コーチング連盟（ICF）認定コーチが、一対一の対話を通じて考えの整理と行動を支えます。<br className="hidden md:inline" />回数や期間は、ご相談のうえ決めます。
-          </p>
-          <div className="mt-10 grid md:grid-cols-3 gap-5">
-            {coaching.map((c) => (
-              <div key={c.title} className="border border-[#e5e5ea] rounded-[20px] p-7">
-                <h3 className="text-[18px] font-semibold">{c.title}</h3>
-                <p className="mt-3 text-[14.5px] leading-[1.8] text-[#6e6e73]">{c.body}</p>
-              </div>
+      {/* 03 コーチング */}
+      <section id="coaching" className="scroll-mt-20 px-5 md:px-10 py-24 md:py-36">
+        <div className="max-w-[1280px] mx-auto">
+          <SectionLabel n="03" label="COACHING" />
+          <div className="mt-8 grid md:grid-cols-[1.2fr_1fr] gap-6 md:gap-16 items-end">
+            <LineReveal className="t-h2" lines={["コーチング"]} />
+            <FadeIn>
+              <p className="t-lead text-[#6e6e73]">
+                国際コーチング連盟（ICF）認定コーチが、一対一の対話を通じて考えの整理と行動を支えます。回数や期間は、ご相談のうえ決めます。
+              </p>
+            </FadeIn>
+          </div>
+          <div className="mt-14 md:mt-16 border-t border-[#1d1d1f]">
+            {coaching.map((c, i) => (
+              <FadeIn key={c.title} delay={i * 0.06} y={14}>
+                <div className="grid md:grid-cols-[88px_1fr_1.2fr] gap-x-8 gap-y-3 py-9 border-b border-[#d2d2d7]">
+                  <p className="t-num text-[14px] text-accent font-semibold">{String(i + 1).padStart(2, "0")}</p>
+                  <h3 className="text-[21px] md:text-[24px] font-semibold tracking-[-0.015em]">{c.title}</h3>
+                  <p className="text-[15px] leading-[1.9] text-[#6e6e73]">{c.body}</p>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 進め方 */}
-      <section className="bg-surface py-16 md:py-24 px-5 md:px-10">
-        <div className="max-w-6xl mx-auto">
-          <p className="eyebrow">OUR APPROACH</p>
-          <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">学びを行動に変える研修</h2>
-          <div className="mt-10 grid md:grid-cols-3 gap-10">
-            {approach.map((a) => (
-              <div key={a.n}>
-                <p className="text-sm font-semibold text-accent">{a.n}</p>
-                <h3 className="mt-2 text-[19px] font-semibold">{a.title}</h3>
-                <p className="mt-2 text-[15px] leading-[1.8] text-[#6e6e73]">{a.body}</p>
-              </div>
+      {/* 04 進め方 */}
+      <section id="approach" className="scroll-mt-20 bg-surface px-5 md:px-10 py-24 md:py-36">
+        <div className="max-w-[1280px] mx-auto">
+          <SectionLabel n="04" label="OUR APPROACH" />
+          <LineReveal className="mt-8 t-h2" lines={["学びを行動に変える研修"]} />
+          <div className="mt-16 grid md:grid-cols-3 gap-14 md:gap-12">
+            {approach.map((a, i) => (
+              <FadeIn key={a.n} delay={i * 0.1}>
+                <div className="border-t border-[#d2d2d7] pt-6">
+                  <p className="t-num text-[56px] md:text-[72px] font-semibold leading-none text-accent/25">{a.n}</p>
+                  <h3 className="mt-6 t-h3">{a.title}</h3>
+                  <p className="mt-3 text-[15px] leading-[1.9] text-[#6e6e73]">{a.body}</p>
+                </div>
+              </FadeIn>
             ))}
           </div>
-          <div className="mt-20">
-            <p className="eyebrow">FLOW</p>
-            <h2 className="mt-3 text-[24px] md:text-[32px] font-semibold">ご相談から実施まで</h2>
-            <div className="mt-10">
-              <FlowLine items={flow} highlight={0} />
+          <div className="mt-24 md:mt-32">
+            <SectionLabel label="FLOW" />
+            <LineReveal className="mt-8 t-h2" lines={["ご相談から実施まで"]} />
+            <div className="mt-16">
+              <FlowLine items={flow} />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#1d1d1f] text-white text-center py-20 px-5 md:px-10">
-        <h2 className="text-[22px] md:text-[30px] font-semibold leading-[1.5]">{CTA.heading}</h2>
-        <p className="mt-3 text-[15px] text-[#c7c7cc]">{CTA.note}</p>
-        <Link href={CTA.href} className="btn-primary mt-8">
-          {CTA.label}
-        </Link>
-      </section>
+      <CtaBand />
     </>
   );
 }

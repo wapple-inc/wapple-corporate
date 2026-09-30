@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import FadeIn from "@/components/FadeIn";
 import JsonLd from "@/components/JsonLd";
+import CtaBand from "@/components/CtaBand";
 import { SITE_URL, SITE_NAME, ORG, breadcrumbJsonLd } from "@/lib/site";
 import { getAllInsightSlugs, getInsightBySlug } from "@/lib/insights";
 
@@ -69,7 +70,7 @@ export default async function InsightPage({ params }: Props) {
 
   const breadcrumb = breadcrumbJsonLd([
     { name: "ホーム", path: "/" },
-    { name: "インサイト", path: "/insights" },
+    { name: "コラム", path: "/insights" },
     { name: post.title, path: `/insights/${slug}` },
   ]);
 
@@ -79,19 +80,19 @@ export default async function InsightPage({ params }: Props) {
 
       <article>
         {/* Header */}
-        <header className="pt-32 pb-12 px-6 border-b border-[#d2d2d7]">
+        <header className="pt-40 md:pt-48 pb-14 px-5 md:px-10 border-b border-[#d2d2d7]">
           <div className="max-w-3xl mx-auto">
             <FadeIn>
               <div className="flex items-center gap-3 mb-6 text-xs text-[#6e6e73]">
                 <Link href="/insights" className="tracking-wider hover:text-[#1d1d1f]">
-                  Insights
+                  コラム
                 </Link>
                 <span>/</span>
                 <span>{post.category}</span>
                 <span>/</span>
                 <time dateTime={post.date}>{formatDate(post.date)}</time>
               </div>
-              <h1 className="font-display text-3xl md:text-4xl font-bold text-[#1d1d1f] leading-tight">
+              <h1 className="text-[30px] md:text-[44px] font-semibold tracking-[-0.025em] text-[#1d1d1f] leading-[1.35]">
                 {post.title}
               </h1>
             </FadeIn>
@@ -99,7 +100,7 @@ export default async function InsightPage({ params }: Props) {
         </header>
 
         {/* Body */}
-        <section className="py-16 px-6">
+        <section className="py-16 md:py-20 px-5 md:px-10">
           <div className="max-w-3xl mx-auto">
             <FadeIn>
               <div
@@ -123,20 +124,8 @@ export default async function InsightPage({ params }: Props) {
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-6 bg-[#1d1d1f] text-center">
-          <FadeIn>
-            <p className="text-sm text-[#6e6e73] mb-6 leading-relaxed">
-              記事に関連する課題について、お気軽にご相談ください。
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block border border-white text-white px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#1d1d1f] transition-colors"
-            >
-              お問い合わせ
-            </Link>
-          </FadeIn>
-        </section>
       </article>
+      <CtaBand />
     </>
   );
 }

@@ -30,7 +30,7 @@ const steps = [
 export default function ProcessSteps() {
   return (
     <section className="py-24 px-6 bg-[#f5f5f7]">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-[1280px] mx-auto">
         <FadeIn>
           <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Process</p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-16">

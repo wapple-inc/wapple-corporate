@@ -1,7 +1,7 @@
 // Wapple ロゴ（C-3：五感の5つの輪＋中心の一滴）。正本は 6_Company/Identity/ブランドガイド_v1_20260929.md
-export function LogoMark({ size = 28, color = "#4F6D8A" }: { size?: number; color?: string }) {
+export function LogoMark({ size = 28, color = "#4F6D8A", className }: { size?: number; color?: string; className?: string }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <svg width={className ? undefined : size} height={className ? undefined : size} className={className} viewBox="0 0 100 100" fill="none" aria-hidden="true">
       <g stroke={color} strokeWidth={size < 40 ? 4 : 2.6}>
         <circle cx="50" cy="28" r="21" />
         <circle cx="71" cy="43" r="21" />

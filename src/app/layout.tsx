@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import CursorRing from "@/components/CursorRing";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, PERSON } from "@/lib/site";
 
 const defaultTitle = "株式会社Wapple｜学びと経験で人の可能性をひらく";
@@ -44,8 +45,9 @@ export default function RootLayout({
       <body className="antialiased">
         <GoogleAnalytics />
         <Header />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
+        <CursorRing />
       </body>
     </html>
   );

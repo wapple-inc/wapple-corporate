@@ -47,6 +47,28 @@ body {
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* 動きを減らす設定の人には、アニメーションとスムーススクロールを止める */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* インサイト記事本文（Markdown → HTML）のスタイル */
@@ -127,24 +149,81 @@ html {
 
 /* 共通パーツ（2026-10 刷新） */
 .eyebrow {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--accent);
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
 }
-.btn-primary {
+
+/* 文字組みのスケール（編集的な大きな見出し） */
+.t-display {
+  font-size: clamp(32px, 9.2vw, 136px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+.t-h1 {
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+.t-h2 {
+  font-size: clamp(30px, 4.2vw, 60px);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+.t-h3 {
+  font-size: clamp(20px, 1.9vw, 26px);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+.t-lead {
+  font-size: clamp(16px, 1.45vw, 20px);
+  line-height: 1.95;
+}
+.t-num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+}
+
+/* 下線が左から伸びるリンク */
+.link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-line:hover { background-size: 100% 1px; }
+
+/* 矢印つきリンク */
+.arrow {
   display: inline-block;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.group:hover .arrow, a:hover > .arrow { transform: translateX(6px); }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   background: var(--accent);
   color: #fff;
   border-radius: 999px;
   padding: 12px 26px;
   font-size: 14px;
   font-weight: 600;
-  transition: background 0.2s;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 .btn-primary:hover { background: var(--accent-dark); }
 .btn-ghost {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   background: #fff;
   color: var(--accent-dark);
   border: 1px solid var(--accent);
@@ -152,6 +231,56 @@ html {
   padding: 12px 26px;
   font-size: 14px;
   font-weight: 600;
-  transition: background 0.2s;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 .btn-ghost:hover { background: var(--accent-soft); }
+.btn-primary:hover .arrow, .btn-ghost:hover .arrow { transform: translateX(4px); }
+.btn-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #fff;
+  color: #1d1d1f;
+  border-radius: 999px;
+  padding: 12px 26px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+}
+.btn-light:hover { background: var(--accent-soft); }
+.btn-light:hover .arrow { transform: translateX(4px); }
+
+@keyframes scrollcue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(300%); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ファーストビュー用：JSを待たずに CSS だけで立ち上がる演出（LCP を遅らせない） */
+@keyframes rise-line {
+  from { transform: translateY(110%); }
+  to { transform: translateY(0); }
+}
+@keyframes rise-fade {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.css-line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.css-line > span {
+  display: block;
+  animation: rise-line 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--d, 0s);
+}
+.css-fade {
+  animation: rise-fade 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--d, 0s);
+}
+@keyframes clip-up {
+  from { clip-path: inset(100% 0 0 0); transform: scale(1.12); }
+  to { clip-path: inset(0 0 0 0); transform: scale(1); }
+}
+.css-clip { animation: clip-up 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.15s both; }

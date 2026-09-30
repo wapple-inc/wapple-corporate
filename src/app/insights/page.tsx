@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import FadeIn from "@/components/FadeIn";
+import PageHero from "@/components/PageHero";
+import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
 import InsightsFilter from "@/components/InsightsFilter";
 import { SITE_URL, SITE_NAME, breadcrumbJsonLd } from "@/lib/site";
 import { getAllInsights } from "@/lib/insights";
 
 export const metadata: Metadata = {
-  title: "インサイト",
+  title: "コラム",
   description:
     "事業戦略・人材開発・組織開発・コーチングに関する実務的な知見をお届けします。市場調査の進め方、研修設計、論点整理など、現場で使える考え方をまとめています。",
   alternates: { canonical: "/insights" },
   openGraph: {
-    title: "インサイト",
+    title: "コラム",
     description:
       "事業戦略・人材開発・組織開発・コーチングに関する実務的な知見をお届けします。",
     url: `${SITE_URL}/insights`,
@@ -25,7 +25,7 @@ export default function InsightsPage() {
   const collectionJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "インサイト | 株式会社Wapple",
+    name: "コラム | 株式会社Wapple",
     url: `${SITE_URL}/insights`,
     isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE_URL },
     hasPart: posts.map((p) => ({
@@ -38,31 +38,20 @@ export default function InsightsPage() {
 
   const breadcrumb = breadcrumbJsonLd([
     { name: "ホーム", path: "/" },
-    { name: "インサイト", path: "/insights" },
+    { name: "コラム", path: "/insights" },
   ]);
 
   return (
     <>
       <JsonLd data={[collectionJsonLd, breadcrumb]} />
 
-      {/* Page header */}
-      <section className="pt-32 pb-16 px-6 border-b border-[#d2d2d7]">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn>
-            <p className="text-xs tracking-[0.3em] text-[#6e6e73] uppercase mb-4">Insights</p>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-[#1d1d1f]">
-              インサイト
-            </h1>
-            <p className="text-sm text-[#6e6e73] leading-relaxed mt-6 max-w-2xl">
-              事業戦略・人材開発・組織開発・コーチングに関する実務的な知見をお届けします。
-            </p>
-          </FadeIn>
-        </div>
-      </section>
+      <PageHero label="COLUMN" title={["コラム"]}>
+        <p className="mt-8 t-lead text-[#6e6e73] max-w-[36em]">事業戦略・人材開発・組織開発・コーチングに関する実務的な知見をお届けします。</p>
+      </PageHero>
 
       {/* Article list with filter */}
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-20 md:py-28 px-5 md:px-10">
+        <div className="max-w-[1280px] mx-auto">
           {posts.length === 0 ? (
             <p className="text-sm text-[#6e6e73]">記事を準備中です。</p>
           ) : (
@@ -71,20 +60,7 @@ export default function InsightsPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 px-6 bg-[#1d1d1f] text-center">
-        <FadeIn>
-          <p className="text-sm text-[#6e6e73] mb-6 leading-relaxed">
-            具体的な課題について相談したい方は、お気軽にお問い合わせください。
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block border border-white text-white px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#1d1d1f] transition-colors"
-          >
-            お問い合わせ
-          </Link>
-        </FadeIn>
-      </section>
+      <CtaBand />
     </>
   );
 }
