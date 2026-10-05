@@ -52,8 +52,8 @@ export const PERSON = {
   image: `${SITE_URL}/profile.png`,
   description:
     "株式会社Wapple代表取締役。人材開発コンサルタント・研修トレーナー・ICF認定コーチ（ACC）。三菱UFJリサーチ＆コンサルティングで戦略コンサルタントとして50件を超えるプロジェクトに携わり、Apple Japanではデータ分析と業務改善を担いながらトレーナーとして研修の企画・実施に取り組んだ。2026年に株式会社Wappleを設立。",
-  // 同一人物のWeb上の別拠点。個人向けサイト（wapple.life）は法人の指名検索と切り離すため結び付けない（2026-10-02）
-  sameAs: [] as string[],
+  // 同一人物のWeb上の別拠点（本人のSNS）。個人向けサイト（wapple.life）は法人の指名検索と切り離すため含めない（2026-10-02）
+  sameAs: ["https://x.com/yoshinarihata", "https://www.youtube.com/@yoshinarihata"],
   credentials: [
     "国際コーチング連盟（ICF）アソシエイト認定コーチ（ACC）",
     "一般社団法人マインドフルネス瞑想協会認定講師",
@@ -123,3 +123,9 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
     })),
   };
 }
+
+// 代表のSNS（代表プロフィール・フッターで表示）
+export const SOCIAL = {
+  x: { label: "X", handle: "@yoshinarihata", url: "https://x.com/yoshinarihata" },
+  youtube: { label: "YouTube", handle: "@yoshinarihata", url: "https://www.youtube.com/@yoshinarihata" },
+} as const;

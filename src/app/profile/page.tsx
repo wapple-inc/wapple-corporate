@@ -8,7 +8,8 @@ import RippleCanvas from "@/components/RippleCanvas";
 import CtaBand from "@/components/CtaBand";
 import ImageReveal from "@/components/ImageReveal";
 import HeroLines, { HeroFade } from "@/components/HeroLines";
-import { SITE_URL, PERSON, personJsonLd, breadcrumbJsonLd } from "@/lib/site";
+import { SITE_URL, PERSON, SOCIAL, personJsonLd, breadcrumbJsonLd } from "@/lib/site";
+import { XIcon, YouTubeIcon } from "@/components/SocialIcons";
 
 export const metadata: Metadata = {
   title: "代表プロフィール｜秦 善成",
@@ -97,6 +98,16 @@ export default function ProfilePage() {
                     {c}
                   </span>
                 ))}
+              </div>
+              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-[14px]">
+                <a href={SOCIAL.x.url} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-[#1d1d1f]">
+                  <XIcon size={15} />
+                  <span className="link-line">{SOCIAL.x.handle}</span>
+                </a>
+                <a href={SOCIAL.youtube.url} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-[#1d1d1f]">
+                  <YouTubeIcon size={18} />
+                  <span className="link-line">YouTube</span>
+                </a>
               </div>
             </HeroFade>
           </div>

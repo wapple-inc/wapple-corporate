@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
-import { SITE_TAGLINE } from "@/lib/site";
+import { SITE_TAGLINE, SOCIAL } from "@/lib/site";
+import { XIcon } from "@/components/SocialIcons";
 import { NAV_ITEMS, NAV_CTA } from "@/lib/nav";
 
 const links = [...NAV_ITEMS, { label: "会社概要", href: "/profile#company" }, NAV_CTA];
@@ -16,6 +17,15 @@ export default function Footer() {
             <br />
             人の可能性をひらく
           </p>
+          <a
+            href={SOCIAL.x.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`代表のX（${SOCIAL.x.handle}）`}
+            className="mt-7 inline-flex items-center justify-center w-10 h-10 rounded-full border border-[#d2d2d7] text-[#1d1d1f] hover:border-accent hover:text-accent transition-colors"
+          >
+            <XIcon size={15} />
+          </a>
         </div>
         <nav className="grid grid-cols-2 gap-x-8 gap-y-4 content-start" aria-label="フッターメニュー">
           {links.map((item) => (
