@@ -14,7 +14,7 @@ import { XIcon, YouTubeIcon } from "@/components/SocialIcons";
 export const metadata: Metadata = {
   title: "代表プロフィール｜秦 善成",
   description:
-    "株式会社Wapple代表 秦善成（はた よしなり）のプロフィール。人材開発コンサルタント・研修トレーナー・ICF認定コーチ（ACC）。戦略コンサルタントとApple Japanでの研修の企画・実施を経て、2026年にWappleを設立。",
+    "株式会社Wapple代表 秦善成（はた よしなり）のプロフィール。研修講師・コーチ（ICF認定コーチ ACC）。戦略コンサルタントとApple Japanでの研修の企画・実施を経て、2026年にWappleを設立。",
   alternates: { canonical: "/profile" },
   openGraph: {
     title: "代表プロフィール｜秦 善成｜株式会社Wapple",
@@ -39,24 +39,33 @@ const companyInfo = [
   { label: "事業内容", value: "企業研修・ワークショップの企画と実施／コーチング" },
 ];
 
+// 講師として大切にしていること（2026-10-09 講師プロフィール v4 と同じ3つにそろえた）
 const style = [
   {
-    title: "受講者が自ら考える時間を大切にする",
-    body: "講師が一方的に話す時間はできるだけ短くし、受講者が自ら考え、周りと意見を交わす時間を多くとるようにしています。",
+    title: "話すより、話してもらう",
+    body: "講師の説明は短くし、受講者が考える・書く・話す時間を研修の中心に置きます。最初の数分で、全員が一度は声やチャットで反応している状態をつくります。",
   },
   {
-    title: "要点を整理して分かりやすく伝える",
-    body: "戦略コンサルタントとして培った論点を整理する力を生かし、複雑な内容も要点を明確にしてお伝えします。",
+    title: "経験から学ぶ",
+    body: "受講者がこれまでの経験を振り返り、うまくいったこと・つまずいたことを言葉にするところから始めます。知識や型はそのあとに渡し、明日からの仕事でどう使うかまで考えてもらいます。",
   },
   {
-    title: "安心して発言できる雰囲気をつくる",
-    body: "落語やスピーチで培った話し方を生かし、受講者が肩の力を抜いて参加できる場づくりを心がけています。",
-  },
-  {
-    title: "研修後の行動の変化までを見据える",
-    body: "学んだことが職場での行動につながるよう、事前のヒアリングから研修後の振り返りまでを一貫して設計します。",
+    title: "答えより、問いを重ねる",
+    body: "発言に正解・不正解をつけず、「どこが」「なぜ」「次はどうする」と問いを重ねます。言葉にしにくい人には、考えるための型と例を示します。",
   },
 ];
+
+// 研修の場面の例（写真の代わりに場面を見せる。講師プロフィール v4 の2枚目と同じ）
+const opening = [
+  { time: "最初の1分", title: "全員に一度反応してもらう", body: "声が聞こえたらリアクションを押してもらい、反応してよい場だと伝えます。" },
+  { time: "3分", title: "講師が短く自己紹介", body: "覚えてもらう材料を1つだけ入れ、このあとの受講者の自己紹介の手本にします。" },
+  { time: "5分", title: "確認の時間も参加の時間に", body: "受講環境やカメラの映り方は、聞くだけでなくその場で操作してもらいます。" },
+  { time: "10分", title: "順番と時間を決めて小グループへ", body: "誰から話すか・1人何分かを先に決めて、オンラインの沈黙を防ぎます。" },
+  { time: "15分", title: "受講者の言葉から本題へ", body: "出た言葉を拾って問いを重ね、体験したことに名前をつけてから本編に入ります。" },
+];
+
+const personal =
+  "人前で話すのが得意ではなかったので、スピーチの会（トーストマスターズ）と落語で話し方を鍛えてきました。今もアマチュア落語と日本舞踊、映像作品へのエキストラ出演、毎年の富士登山を続けています。";
 
 const credentials = [
   "国際コーチング連盟（ICF）認定コーチ ACC",
@@ -117,10 +126,10 @@ export default function ProfilePage() {
       <section className="bg-surface px-5 md:px-10 py-24 md:py-36">
         <div className="max-w-[1280px] mx-auto">
           <SectionLabel n="01" label="STYLE" />
-          <LineReveal className="mt-8 t-h2" lines={["講師として", "心がけていること"]} />
-          <div className="mt-16 md:mt-20 grid md:grid-cols-2 gap-x-16 gap-y-4">
+          <LineReveal className="mt-8 t-h2" lines={["講師として", "大切にしていること"]} />
+          <div className="mt-16 md:mt-20 grid md:grid-cols-3 gap-x-12 gap-y-4">
             {style.map((s, i) => (
-              <FadeIn key={s.title} delay={(i % 2) * 0.08}>
+              <FadeIn key={s.title} delay={i * 0.08}>
                 <div className="border-t border-[#d2d2d7] pt-7 pb-8">
                   <p className="t-num text-[13px] text-accent font-semibold">{String(i + 1).padStart(2, "0")}</p>
                   <h3 className="mt-3 t-h3">{s.title}</h3>
@@ -134,7 +143,30 @@ export default function ProfilePage() {
 
       <section className="px-5 md:px-10 py-24 md:py-36">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel n="02" label="CAREER" />
+          <SectionLabel n="02" label="SCENE" />
+          <LineReveal className="mt-8 t-h2" lines={["研修の場面", "（オンライン研修の冒頭15分の例）"]} />
+          <p className="mt-8 max-w-[760px] text-[15.5px] md:text-[17px] leading-[1.95] text-[#424245]">
+            新入社員研修の始まり方の一例です。最初の15分で、受講者が自分の言葉で話し始められる状態をつくります。
+          </p>
+          <ol className="mt-12 md:mt-16 grid md:grid-cols-5 gap-4">
+            {opening.map((o, i) => (
+              <li key={o.time}>
+                <FadeIn y={14} delay={i * 0.05} className="h-full">
+                  <div className="h-full bg-surface rounded-[20px] p-6">
+                    <p className="t-num text-[13px] text-accent font-semibold">{o.time}</p>
+                    <h3 className="mt-3 text-[16px] font-semibold leading-[1.6]">{o.title}</h3>
+                    <p className="mt-3 text-[14px] leading-[1.9] text-[#6e6e73]">{o.body}</p>
+                  </div>
+                </FadeIn>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="bg-surface px-5 md:px-10 py-24 md:py-36">
+        <div className="max-w-[1280px] mx-auto">
+          <SectionLabel n="03" label="CAREER" />
           <LineReveal className="mt-8 t-h2" lines={["経歴"]} />
           <ol className="mt-16 md:mt-20 border-t border-[#1d1d1f] md:grid md:auto-rows-fr">
             {career.map((c, i) => (
@@ -148,12 +180,16 @@ export default function ProfilePage() {
               </li>
             ))}
           </ol>
+          <div className="mt-14 md:mt-16 max-w-[760px]">
+            <h3 className="t-h3">人となり</h3>
+            <p className="mt-4 text-[15.5px] md:text-[17px] leading-[1.95] text-[#424245]">{personal}</p>
+          </div>
         </div>
       </section>
 
-      <section id="company" className="scroll-mt-20 bg-surface px-5 md:px-10 py-24 md:py-36">
+      <section id="company" className="scroll-mt-20 px-5 md:px-10 py-24 md:py-36">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel n="03" label="COMPANY" />
+          <SectionLabel n="04" label="COMPANY" />
           <LineReveal className="mt-8 t-h2" lines={["会社概要"]} />
           <dl className="mt-16 md:mt-20 border-t border-[#1d1d1f] md:grid md:auto-rows-fr">
             {companyInfo.map((c) => (
