@@ -19,7 +19,7 @@ export default function ProgramList({ programs }: { programs: FocusProgram[] }) 
               </span>
               <span className="relative">
                 <span className="block text-[21px] md:text-[30px] font-semibold leading-[1.35] tracking-[-0.02em] group-hover:text-accent-dark transition-colors">
-                  {p.name}
+                  {p.name.replace("生成AI", "生成\u2060AI")}
                 </span>
                 <span className="md:hidden mt-3 block text-[14.5px] leading-[1.8] text-[#6e6e73]">{p.summary}</span>
                 <span className="md:hidden mt-3 block text-[12.5px] text-[#6e6e73]">{p.audience}｜{p.duration}</span>

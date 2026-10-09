@@ -59,10 +59,7 @@ export default function ProgramsPage() {
       <PageHero label="SERVICES" title={["サービス"]} sub="研修・ワークショップ・コーチング">
         <div className="mt-12 md:mt-16 grid lg:grid-cols-[1.9fr_1fr] gap-10 lg:gap-14 items-end">
           <p className="t-lead text-[#6e6e73]">
-            {/* 句点ごとに改行 */}
-            <span className="block">生成AIの活用が広がるほど、人の判断力や対話の力が問われます。</span>
-            <span className="block">研修とワークショップは、企業や対象者の課題に合わせて設計します。</span>
-            <span className="block">時間や人数、対面・オンラインなどの条件も含めて、お気軽にご相談ください。</span>
+            生成AIの活用が広がるほど、人の判断力や対話の力が問われます。研修とワークショップは、企業や対象者の課題に合わせて設計します。時間や人数、対面・オンラインなどの条件も含めて、お気軽にご相談ください。
           </p>
           <nav aria-label="このページの目次" className="border-t border-[#d2d2d7]">
             {index.map((it, i) => (
@@ -93,7 +90,7 @@ export default function ProgramsPage() {
                 <div className="mt-5 md:mt-0">
                   <FadeIn y={16}>
                     <div className="md:flex md:items-baseline md:justify-between gap-8">
-                      <h3 className="text-[26px] md:text-[38px] font-semibold leading-[1.35] tracking-[-0.025em]">{p.name}</h3>
+                      <h3 className="text-[26px] md:text-[38px] font-semibold leading-[1.35] tracking-[-0.025em]">{p.name.replace("生成AI", "生成\u2060AI")}</h3>
                       <p className="mt-3 md:mt-0 shrink-0 flex gap-2 text-[12.5px]">
                         <span className="rounded-full bg-accent-soft text-accent-dark px-3 py-1">{p.audience}</span>
                         <span className="rounded-full bg-accent-soft text-accent-dark px-3 py-1">{p.duration}</span>
@@ -156,10 +153,10 @@ export default function ProgramsPage() {
           <div className="mt-8 grid md:grid-cols-[1.2fr_1fr] gap-6 md:gap-16 items-end">
             <LineReveal className="t-h2" lines={["階層別研修"]} />
             <FadeIn>
-              <p className="t-lead text-[#6e6e73]">2〜4時間を基本とし、1日研修や複数回のシリーズにも対応します。</p>
+              <p className="t-lead text-[#6e6e73]">2〜4時間を基本とし、1日研修や複数回のシリーズにも対応します。高校など教育機関での研修も行っています。</p>
             </FadeIn>
           </div>
-          <div className="mt-14 md:mt-16 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="mt-14 md:mt-16 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {levelPrograms.map((l, i) => (
               <FadeIn key={l.level} delay={i * 0.07} className="bg-white rounded-[22px] p-7">
                 <p className="t-num text-[12px] text-accent font-semibold">{String(i + 1).padStart(2, "0")}</p>

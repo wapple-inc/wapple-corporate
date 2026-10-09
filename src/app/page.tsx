@@ -162,9 +162,9 @@ export default function Home() {
         <div className="max-w-[1280px] mx-auto">
           <SectionLabel n="04" label="BY LEVEL" />
           <LineReveal className="mt-8 t-h2" lines={["階層別研修にも", "対応しています"]} />
-          <div className="mt-14 md:mt-16 grid sm:grid-cols-2 md:grid-cols-4 border-t border-[#d2d2d7]">
+          <div className="mt-14 md:mt-16 grid sm:grid-cols-2 md:grid-cols-3 border-t border-[#d2d2d7]">
             {levelPrograms.map((l, i) => (
-              <FadeIn key={l.level} delay={i * 0.07} className={`py-8 sm:px-6 border-b md:border-b-0 border-[#e5e5ea] ${i > 0 ? "md:border-l" : ""} ${i % 2 === 1 ? "sm:border-l" : ""} ${i === 0 ? "sm:pl-0" : ""}`}>
+              <FadeIn key={l.level} delay={i * 0.07} className={`py-8 sm:px-6 border-b border-[#e5e5ea] ${i % 2 === 1 ? "sm:border-l" : "sm:pl-0"} ${i % 3 === 0 ? "md:border-l-0 md:pl-0" : "md:border-l md:pl-6"}`}>
                 <p className="t-num text-[12px] text-accent font-semibold">{String(i + 1).padStart(2, "0")}</p>
                 <h3 className="mt-2 text-[19px] font-semibold">{l.level}</h3>
                 <ul className="mt-5 space-y-2.5">
