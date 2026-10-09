@@ -39,21 +39,6 @@ const companyInfo = [
   { label: "事業内容", value: "企業研修・ワークショップの企画と実施／コーチング" },
 ];
 
-// 講師として大切にしていること（2026-10-09 講師プロフィール v4 と同じ3つにそろえた）
-const style = [
-  {
-    title: "話すより、話してもらう",
-    body: "講師の説明は短くし、受講者が考える・書く・話す時間を研修の中心に置きます。最初の数分で、全員が一度は声やチャットで反応している状態をつくります。",
-  },
-  {
-    title: "経験から学ぶ",
-    body: "受講者がこれまでの経験を振り返り、うまくいった\u2060こと・つ\u2060まずいたことを言葉にするところから始めます。知識や型はそのあとに渡し、明日からの仕事でどう使うかまで考えてもらいます。",
-  },
-  {
-    title: "答えより、問いを重ねる",
-    body: "発言に正解・不正解をつけず、「どこが」「なぜ」「次は\u2060どうする」と問いを重ねます。言葉に\u2060しにくい人には、考えるための型と例を示します。",
-  },
-];
 
 const personal =
   "アマチュア落語と日本舞踊、映像作品へのエキストラ出演、毎年の富士登山を続けています。人前で話すのが得意ではなかったことから、スピーチサークル（トーストマスターズ）と落語で話し方を鍛えてきました。";
@@ -116,25 +101,7 @@ export default function ProfilePage() {
 
       <section className="bg-surface px-5 md:px-10 py-24 md:py-36">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel n="01" label="STYLE" />
-          <LineReveal className="mt-8 t-h2" lines={["講師として", "大切にしていること"]} />
-          <div className="mt-16 md:mt-20 grid md:grid-cols-3 gap-x-12 gap-y-4">
-            {style.map((s, i) => (
-              <FadeIn key={s.title} delay={i * 0.08}>
-                <div className="border-t border-[#d2d2d7] pt-7 pb-8">
-                  <p className="t-num text-[13px] text-accent font-semibold">{String(i + 1).padStart(2, "0")}</p>
-                  <h3 className="mt-3 t-h3">{s.title}</h3>
-                  <p className="mt-3 text-[15px] leading-[1.95] text-[#6e6e73]">{s.body}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-5 md:px-10 py-24 md:py-36">
-        <div className="max-w-[1280px] mx-auto">
-          <SectionLabel n="02" label="CAREER" />
+          <SectionLabel n="01" label="CAREER" />
           <LineReveal className="mt-8 t-h2" lines={["経歴"]} />
           <ol className="mt-16 md:mt-20 border-t border-[#1d1d1f] md:grid md:auto-rows-fr">
             {career.map((c, i) => (
@@ -155,9 +122,9 @@ export default function ProfilePage() {
         </div>
       </section>
 
-      <section id="company" className="scroll-mt-20 bg-surface px-5 md:px-10 py-24 md:py-36">
+      <section id="company" className="scroll-mt-20 px-5 md:px-10 py-24 md:py-36">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel n="03" label="COMPANY" />
+          <SectionLabel n="02" label="COMPANY" />
           <LineReveal className="mt-8 t-h2" lines={["会社概要"]} />
           <dl className="mt-16 md:mt-20 border-t border-[#1d1d1f] md:grid md:auto-rows-fr">
             {companyInfo.map((c) => (
