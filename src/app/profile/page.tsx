@@ -55,17 +55,8 @@ const style = [
   },
 ];
 
-// 研修の場面の例（写真の代わりに場面を見せる。講師プロフィール v4 の2枚目と同じ）
-const opening = [
-  { time: "最初の1分", title: "全員に一度反応してもらう", body: "声が聞こえたらリアクションを押してもらい、反応してよい場だと伝えます。" },
-  { time: "3分", title: "講師が短く自己紹介", body: "覚えてもらう材料を1つだけ入れ、このあとの受講者の自己紹介の手本にします。" },
-  { time: "5分", title: "確認の時間も参加の時間に", body: "受講環境やカメラの映り方は、聞くだけでなくその場で操作してもらいます。" },
-  { time: "10分", title: "順番と時間を決めて小グループへ", body: "誰から話すか・1人何分かを先に決めて、オンラインの沈黙を防ぎます。" },
-  { time: "15分", title: "受講者の言葉から本題へ", body: "出た言葉を拾って問いを重ね、体験したことに名前をつけてから本編に入ります。" },
-];
-
 const personal =
-  "人前で話すのが得意ではなかったので、スピーチサークル（トーストマスターズ）と落語で話し方を鍛えてきました。今もアマチュア落語と日本舞踊、映像作品へのエキストラ出演、毎年の富士登山を続けています。";
+  "アマチュア落語と日本舞踊、映像作品へのエキストラ出演、毎年の富士登山を続けています。人前で話すのが得意ではなかったことから、スピーチサークル（トーストマスターズ）と落語で話し方を鍛えてきました。";
 
 const credentials = [
   "国際コーチング連盟（ICF）認定コーチ ACC",
@@ -143,30 +134,7 @@ export default function ProfilePage() {
 
       <section className="px-5 md:px-10 py-24 md:py-36">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel n="02" label="SCENE" />
-          <LineReveal className="mt-8 t-h2" lines={["研修の場面"]} />
-          <p className="mt-8 max-w-[760px] text-[15.5px] md:text-[17px] leading-[1.95] text-[#424245]">
-            オンラインで行う新入社員研修の、冒頭15分の進め方の例です。最初の15分で、受講者が自分の言葉で話し始められる状態をつくります。
-          </p>
-          <ol className="mt-12 md:mt-16 grid md:grid-cols-5 gap-4">
-            {opening.map((o, i) => (
-              <li key={o.time}>
-                <FadeIn y={14} delay={i * 0.05} className="h-full">
-                  <div className="h-full bg-surface rounded-[20px] p-6">
-                    <p className="t-num text-[13px] text-accent font-semibold">{o.time}</p>
-                    <h3 className="mt-3 text-[16px] font-semibold leading-[1.6]">{o.title}</h3>
-                    <p className="mt-3 text-[14px] leading-[1.9] text-[#6e6e73]">{o.body}</p>
-                  </div>
-                </FadeIn>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="bg-surface px-5 md:px-10 py-24 md:py-36">
-        <div className="max-w-[1280px] mx-auto">
-          <SectionLabel n="03" label="CAREER" />
+          <SectionLabel n="02" label="CAREER" />
           <LineReveal className="mt-8 t-h2" lines={["経歴"]} />
           <ol className="mt-16 md:mt-20 border-t border-[#1d1d1f] md:grid md:auto-rows-fr">
             {career.map((c, i) => (
@@ -181,15 +149,15 @@ export default function ProfilePage() {
             ))}
           </ol>
           <div className="mt-14 md:mt-16 max-w-[760px]">
-            <h3 className="t-h3">人となり</h3>
+            <h3 className="t-h3">仕事以外で続けていること</h3>
             <p className="mt-4 text-[15.5px] md:text-[17px] leading-[1.95] text-[#424245]">{personal}</p>
           </div>
         </div>
       </section>
 
-      <section id="company" className="scroll-mt-20 px-5 md:px-10 py-24 md:py-36">
+      <section id="company" className="scroll-mt-20 bg-surface px-5 md:px-10 py-24 md:py-36">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel n="04" label="COMPANY" />
+          <SectionLabel n="03" label="COMPANY" />
           <LineReveal className="mt-8 t-h2" lines={["会社概要"]} />
           <dl className="mt-16 md:mt-20 border-t border-[#1d1d1f] md:grid md:auto-rows-fr">
             {companyInfo.map((c) => (
